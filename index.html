@@ -1,263 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Arkaprabha Basu | Computer Vision, LLM Researcher</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arkaprabha Basu | AI & CV Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* Basic Reset and Typography */
-    body, html {
+    :root {
+      --primary: #1abc9c;
+      --dark: #2c3e50;
+      --light: #f4f4f4;
+      --text: #333;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      background: #f4f4f4;
-      color: #333;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
-    a { text-decoration: none; color: #007acc; }
-    a:hover { text-decoration: underline; }
-    
-    /* Header Styles */
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+    }
+
     header {
-      background: #222;
+      background: linear-gradient(to right, #1c1c1c, #2c3e50);
       color: #fff;
-      padding: 1rem 2rem;
+      padding: 2rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      text-align: center;
     }
-    .profile-info {
-      display: flex;
-      align-items: center;
-    }
-    .profile-info img {
+
+    header img {
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      width: 120px;
-      height: 120px;
       object-fit: cover;
-      margin-right: 1rem;
-      border: 3px solid #fff;
+      border: 4px solid #fff;
+      margin-bottom: 1rem;
     }
-    .profile-info h1 {
-      margin: 0;
-      font-size: 2rem;
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
+
     .tagline {
-      font-size: 1rem;
       color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
     }
-    
-    /* Navigation */
+
+    header a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
     nav {
-      width: 100%;
-      background: #333;
-      padding: 0.5rem 2rem;
+      background-color: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     nav ul {
       list-style: none;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
+      padding: 1rem 0;
       margin: 0;
-      padding: 0;
     }
+
     nav li {
-      margin: 0 1rem;
+      margin: 0 1.2rem;
     }
-    nav li a {
-      color: #fff;
-      font-size: 1rem;
-      font-weight: bold;
+
+    nav a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
     }
-    
-    /* Main Container */
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
     .container {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 1rem 2rem;
-      background: #fff;
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1.5rem;
     }
+
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
+
     section h2 {
-      border-bottom: 2px solid #007acc;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 6px solid var(--primary);
+      padding-left: 1rem;
     }
-    
-    /* Publications list */
-    .publications li {
-      margin-bottom: 1rem;
+
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.05);
     }
-    .publications li strong {
+
+    .card strong {
       font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.5rem;
     }
-    
-    /* Footer */
+
+    .badge-new {
+      display: inline-block;
+      background-color: #e74c3c;
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+    }
+
     footer {
-      background: #222;
-      color: #fff;
+      background-color: var(--dark);
+      color: #ecf0f1;
       text-align: center;
-      padding: 1rem 2rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
     }
-    
-    /* Responsive */
-    @media (max-width: 600px) {
-      header { flex-direction: column; text-align: center; }
-      .profile-info { flex-direction: column; }
-      .profile-info img { margin-bottom: 1rem; }
-      nav ul { flex-direction: column; }
-      nav li { margin: 0.5rem 0; }
+
+    footer a {
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav li {
+        margin: 0.5rem 0;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header with Profile Photo and Title -->
+
+  <!-- Header -->
   <header>
-    <div class="profile-info">
-      <!-- Replace with your profile image URL -->
-      <img src="./assets/47769368.jpeg" alt="Profile Photo">
-      <div>
-        <h1>Arkaprabha Basu</h1>
-        <p class="tagline">Multimodality, LLM, Computer Vision & Deep Learning Researcher</p>
-        <p>Kolkata, West Bengal, India | <a href="mailto:arkaprabha17@gmail.com" style="color:#fff;">arkaprabha17@gmail.com</a></p>
-      </div>
-    </div>
+    <img src="./assets/47769368.jpeg" alt="Profile Photo">
+    <h1>Arkaprabha Basu</h1>
+    <p class="tagline">Multimodality | Computer Vision | LLM Researcher</p>
+    <p>Kolkata, India | <a href="mailto:arkaprabha17@gmail.com">arkaprabha17@gmail.com</a></p>
   </header>
-  
-  <!-- Navigation Bar -->
+
+  <!-- Navbar -->
   <nav>
     <ul>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#research">Research Experience</a></li>
-      <li><a href="#industry">Industry Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#industry">Industry</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#thesis">Thesis</a></li>
     </ul>
   </nav>
-  
-  <!-- Main Content -->
+
+  <!-- Main Container -->
   <div class="container">
-    
-    <!-- Publications Section (only accepted/published) -->
+
+    <!-- Publications -->
     <section id="publications">
       <h2>Research Publications</h2>
-      <ol class="publications">
-        <li>
-          <strong>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in LLMs</strong><br> <span class="badge-new">NEW</span>
-          IJCNN 2025 (Accepted, Ranking: B) – <a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a>
-        </li>
-        <li>
-          <strong>From Complexity to Clarity: Transforming Chest X-ray Reports with Chained Prompting</strong><br> <span class="badge-new">NEW</span>
-          AAAI 2025 Student Abstract (Accepted, Ranking: A*) – <a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI Link</a>
-        </li>
-        <li>
-          <strong>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</strong><br>
-          ICPR 2024 (Ranking: B) – <a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI Link</a>
-        </li>
-        <li>
-          <strong>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</strong><br>
-          IEEE Access (Ranking: Q1, Top 8%) – <a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI Link</a>
-        </li>
-        <li>
-          <strong>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection? An Explainable Analysis</strong><br>
-          IEEE Transactions on Artificial Intelligence (TAI) (Ranking: Q1, Top 20%) – <a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI Link</a>
-        </li>
-        <li>
-          <strong>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</strong><br>
-          ADCIS 2022 (Ranking: Unranked) – <a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI Link</a>
-        </li>
-        <li>
-          <strong>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</strong><br>
-          ICCCNT (Ranking: Unranked) – <a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI Link</a>
-        </li>
-        <li>
-          <strong>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</strong><br>
-          (Communicated) – <a href="https://doi.org/10.48550/arXiv.2312.06591" target="_blank">Arxiv Link</a>
-        </li>
-      </ol>
+
+      <div class="card"><strong>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in LLMs <span class="badge-new">NEW</span></strong>IJCNN 2025 (B) – <a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a></div>
+
+      <div class="card"><strong>From Complexity to Clarity: Transforming Chest X-ray Reports with Chained Prompting <span class="badge-new">NEW</span></strong>AAAI 2025 Student Abstract (A*) – <a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI</a></div>
+
+      <div class="card"><strong>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</strong>ICPR 2024 (B) – <a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI</a></div>
+
+      <div class="card"><strong>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</strong>IEEE Access (Q1) – <a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI</a></div>
+
+      <div class="card"><strong>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</strong>IEEE TAI (Q1) – <a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI</a></div>
+
+      <div class="card"><strong>On Regenerative and Discriminative Learning from Digital Heritages</strong>ADCIS 2022 – <a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI</a></div>
+
+      <div class="card"><strong>Face Mask Recognition using Advanced Face Cut Algorithm</strong>ICCCNT 2021 – <a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI</a></div>
+
+      <div class="card"><strong>Concurrent Density Estimation with Wasserstein Autoencoders</strong>Arxiv (Communicated) – <a href="https://doi.org/10.48550/arXiv.2312.06591" target="_blank">Arxiv</a></div>
     </section>
-    
-    <!-- Research Experience Section -->
+
+    <!-- Research -->
     <section id="research">
       <h2>Research Experience</h2>
-      <ul>
-        <li>
-          <strong>Alzheimer Medical Report Generation using Multimodal Fusion</strong><br>
-          TCG Crest, Kolkata (Feb 2024 – Dec 2024)<br>
-          Focus on multimodal explainable AI for Alzheimer’s disease classification and medical report generation using prompt engineering and fine-tuned LLMs.
-        </li>
-        <li>
-          <strong>Digital Restoration and Reconstruction of Indian Heritage Artefacts using Big Data Technology</strong><br>
-          DST Project under Dr. Swagatam Das, Indian Statistical Institute, Kolkata (Jul 2022 – Mar 2023)
-        </li>
-        <li>
-          <strong>Advanced Machine Learning Tools for Multi-modal Image-assisted Diagnostics of Infectious Respiratory Diseases</strong><br>
-          DST Project under Dr. Swagatam Das, Indian Statistical Institute, Kolkata (Jan 2021 – Sep 2021)<br>
-          Deployment of deep learning models for chest X-ray classification (Paper accepted in IEEE Transactions on Artificial Intelligence).
-        </li>
-      </ul>
+
+      <div class="card"><strong>Alzheimer Medical Report Generation</strong>TCG Crest, Kolkata (Feb–Dec 2024)<br>Multimodal explainable AI + LLMs for Alzheimer’s classification.</div>
+
+      <div class="card"><strong>Digital Restoration of Indian Heritage</strong>DST @ ISI Kolkata (Jul 2022 – Mar 2023)</div>
+
+      <div class="card"><strong>Multi-modal Diagnostics for Respiratory Diseases</strong>DST @ ISI Kolkata (Jan–Sep 2021)</div>
     </section>
-    
-    <!-- Industry Experience Section -->
+
+    <!-- Industry -->
     <section id="industry">
       <h2>Industry Experience</h2>
-      <ul>
-        <li>
-          <strong>Data Scientist</strong><br>
-          HappyMonk.ai, Bengaluru, India (Apr 2023 – Dec 2023)<br>
-          Developed computer vision solutions for re-identification, activity recognition, and object detection. <a href="https://happymonk.co/" target="_blank">Company Website</a>
-        </li>
-      </ul>
+      <div class="card">
+        <strong>Data Scientist</strong><br>
+        HappyMonk.ai, Bengaluru (Apr–Dec 2023)<br>
+        Built re-ID, object detection, and activity recognition models.
+        <a href="https://happymonk.co/" target="_blank">Company Website</a>
+      </div>
     </section>
-    
-    <!-- Education Section -->
+
+    <!-- Education -->
     <section id="education">
       <h2>Education</h2>
-      <ul>
-        <li>
-          <strong>Master of Technology in Computer Science</strong><br>
-          University of Hyderabad (Sep 2021 – Sep 2023) | CGPA: 9.3
-        </li>
-        <li>
-          <strong>Master of Science in Computer Science</strong><br>
-          Pondicherry Central University (May 2018 – Sep 2020) | CGPA: 8.74
-        </li>
-        <li>
-          <strong>Bachelor of Science in Computer Science</strong><br>
-          Ramakrishna Mission Residential College, Narendrapur, Calcutta University (May 2015 – May 2018) | Percentage: 82.125%
-        </li>
-      </ul>
+
+      <div class="card"><strong>M.Tech in Computer Science</strong>University of Hyderabad (2021–2023) | CGPA: 9.3</div>
+
+      <div class="card"><strong>M.Sc in Computer Science</strong>Pondicherry University (2018–2020) | CGPA: 8.74</div>
+
+      <div class="card"><strong>B.Sc in Computer Science</strong>RKMRC, CU (2015–2018) | 82.13%</div>
     </section>
-    
-    <!-- Thesis Section -->
+
+    <!-- Thesis -->
     <section id="thesis">
-      <h2>Post Graduation Thesis</h2>
-      <ul>
-        <li>
-          <strong>Revealing the Ancient Beauty: Digital Reconstruction of Temple Tiles using Computer Vision</strong><br>
-          Project Assistant, ISI, Kolkata, University of Hyderabad (Jul 2022 – Mar 2023)<br>
-          <a href="https://drive.google.com/file/d/1MAN2eXrhBumW84sWI7jWOMl7L6v8HW4V/view?usp=drive_link" target="_blank">View Thesis</a>
-        </li>
-        <li>
-          <strong>Handwritten Character Recognition with Upgraded Contour Detection and Bounding Box Healing Technique from Webcam</strong><br>
-          Project with Course Curriculum, Pondicherry Central University (Dec 2019 – May 2020)<br>
-          <a href="https://docs.google.com/document/d/1zbNwPOIlzSrv8lTJmcKWS0HCDQ9JRz0c/edit?usp=drive_link" target="_blank">View Project Details</a>
-        </li>
-      </ul>
+      <h2>Thesis Projects</h2>
+
+      <div class="card">
+        <strong>Digital Reconstruction of Temple Tiles</strong><br>
+        ISI Kolkata + UoH (2022–2023) – <a href="https://drive.google.com/file/d/1MAN2eXrhBumW84sWI7jWOMl7L6v8HW4V/view" target="_blank">View Thesis</a>
+      </div>
+
+      <div class="card">
+        <strong>Handwritten Character Recognition</strong><br>
+        Pondicherry University (2019–2020) – <a href="https://docs.google.com/document/d/1zbNwPOIlzSrv8lTJmcKWS0HCDQ9JRz0c/edit" target="_blank">View Details</a>
+      </div>
     </section>
-    
   </div>
-  
-  <!-- Footer with Social Links -->
+
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Arkaprabha Basu | 
-      <!-- You may add more social links if available -->
-      <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank" style="color:#fff;">Google Scholar</a>
-    </p>
+    &copy; 2025 Arkaprabha Basu | 
+    <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank">Google Scholar</a>
   </footer>
+
 </body>
 </html>
