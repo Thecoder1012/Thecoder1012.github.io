@@ -4,164 +4,262 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arkaprabha Basu | LLM & CV Researcher</title>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    /* ----------------------------------------- */
-    /* CSS Variables for theming                */
-    /* ----------------------------------------- */
     :root {
-      --primary: #1abc9c;        /* Main accent */
-      --secondary: #e67e22;      /* Secondary accent */
-      --dark: #2c3e50;           /* Dark background */
-      --light: #f9f9f9;          /* Light background */
-      --text: #333;              /* Default text color */
-      --accent-bg: #ecf0f1;      /* Card background */
-      --border-llm: #8e44ad;     /* Borders by theme */
+      --primary: #1abc9c;
+      --secondary: #e67e22;
+      --dark: #2c3e50;
+      --light: #f9f9f9;
+      --text: #333;
+      --accent-bg: #ecf0f1;
+      --border-llm: #8e44ad;
       --border-medical: #e74c3c;
       --border-cv: #3498db;
       --border-heritage: #f1c40f;
       --border-ml: #16a085;
     }
-    /* Reset & smooth scroll */
-    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
-
-    /* Body with dark mode support */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
     body {
-      font-family:'Inter',sans-serif;
-      background-color:var(--light);
-      color:var(--text);
-      line-height:1.6;
-      transition:background-color .3s, color .3s;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background-color .3s, color .3s;
     }
     body.dark-mode {
-      background-color:var(--dark);
-      color:#ddd;
+      background-color: #222;
+      color: #ddd;
     }
-
     /* Header */
     header {
-      background:linear-gradient(135deg,var(--dark),var(--secondary));
-      color:#fff;
-      padding:3rem 1rem;
-      text-align:center;
+      background: linear-gradient(135deg, var(--dark), var(--secondary));
+      color: #fff;
+      padding: 3rem 1rem;
+      text-align: center;
     }
     header img {
-      width:140px; height:140px;
-      border-radius:50%; border:4px solid #fff;
-      margin-bottom:1rem;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin-bottom: 1rem;
     }
-    header h1 { font-size:3rem; margin-bottom:.3rem; }
-    .tagline { color:#ddd; font-size:1.1rem; margin-bottom:.5rem; }
-    header a { color:var(--primary); font-weight:600; }
-
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: .3rem;
+    }
+    .tagline {
+      color: #ddd;
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+    }
+    header a {
+      color: var(--primary);
+      font-weight: 600;
+    }
     /* Navbar */
     nav {
-      background-color:var(--dark);
-      position:sticky; top:0; z-index:1000;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:.5rem 1rem;
+      background-color: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .5rem 1rem;
     }
-    nav ul { list-style:none; display:flex; flex-wrap:wrap; }
-    nav li { margin:0 .8rem; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    nav li {
+      margin: 0 .8rem;
+    }
     nav a {
-      color:#fff; font-weight:600; text-decoration:none;
-      transition:color .3s;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color .3s;
     }
-    nav a:hover { color:var(--primary); }
+    nav a:hover {
+      color: var(--primary);
+    }
     #theme-toggle {
-      background:var(--primary); border:none; color:#fff;
-      padding:.5rem 1rem; border-radius:4px;
-      cursor:pointer; font-weight:600;
+      background: var(--primary);
+      border: none;
+      color: #fff;
+      padding: .5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
     }
-
-    /* Container & sections */
-    .container { max-width:1200px; margin:2rem auto; padding:0 1rem; }
-    section { margin-bottom:3rem; }
+    /* Container & Sections */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
     section h2 {
-      font-size:2rem; margin-bottom:1rem;
-      border-left:6px solid var(--primary); padding-left:1rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-left: 6px solid var(--primary);
+      padding-left: 1rem;
     }
-
-    /* Filters */
+    /* Search & Filters */
     .filters {
-      display:flex; flex-wrap:wrap; align-items:center;
-      margin-bottom:1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1.5rem;
     }
     .filters input[type="search"] {
-      flex:1; padding:.5rem 1rem; margin-right:1rem;
-      border:1px solid #ccc; border-radius:4px;
+      flex: 1;
+      padding: .5rem 1rem;
+      margin-right: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
     .filters label {
-      margin-right:1rem; display:flex; align-items:center;
-      font-size:.9rem;
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      font-size: .9rem;
     }
-    .filters input[type="checkbox"] { margin-right:.3rem; }
-
-    /* Masonry layout for publications */
+    .filters input[type="checkbox"] {
+      margin-right: .3rem;
+    }
+    /* Masonry Layout */
     .masonry {
-      column-width:300px;
-      column-gap:1.5rem;
+      column-width: 300px;
+      column-gap: 1.5rem;
     }
     .masonry .card {
-      display:inline-block; width:100%; margin-bottom:1.5rem;
-      background:var(--accent-bg);
-      border:3px solid var(--primary);
-      border-radius:10px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
-      transition:transform .3s,border-color .3s;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      background: #fff;
+      border: 3px solid var(--primary);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      /* only border-color animates now */
+      transition: border-color .3s;
     }
     body.dark-mode .masonry .card {
-      background:#333;
-      box-shadow:0 5px 15px rgba(0,0,0,0.5);
+      background: #333;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
-    /* On hover: only border color changes */
-    .masonry .card:hover { border-color:var(--secondary); }
-
-    /* Two-column grid helper */
-    .grid-2 {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:1.5rem;
+    /* on hover, only border changes */
+    .masonry .card:hover {
+      border-color: var(--primary);
     }
-
-    /* Theme-specific borders */
-    .theme-llm      { border-color:var(--border-llm); }
-    .theme-medical  { border-color:var(--border-medical); }
-    .theme-cv       { border-color:var(--border-cv); }
-    .theme-heritage { border-color:var(--border-heritage); }
-    .theme-ml       { border-color:var(--border-ml); }
-
-    /* Card content styling */
-    .card-content { padding:1.5rem; }
+    /* Theme border colors */
+    .theme-llm      { border-color: var(--border-llm); }
+    .theme-medical  { border-color: var(--border-medical); }
+    .theme-cv       { border-color: var(--border-cv); }
+    .theme-heritage { border-color: var(--border-heritage); }
+    .theme-ml       { border-color: var(--border-ml); }
+    /* Card content */
+    .card-content {
+      padding: 1.5rem;
+    }
     .card h3 {
-      font-size:1.3rem; margin-bottom:.6rem;
-      color:var(--dark);
+      font-size: 1.3rem;
+      margin-bottom: .6rem;
+      color: var(--dark);
     }
-    body.dark-mode .card h3 { color:#fff; }
+    body.dark-mode .card h3 {
+      color: #fff;
+    }
     .publication-details {
-      font-size:.95rem; color:#555; margin-bottom:.5rem;
+      font-size: .95rem;
+      color: #555;
+      margin-bottom: .5rem;
     }
-    body.dark-mode .publication-details { color:#ccc; }
+    body.dark-mode .publication-details {
+      color: #ccc;
+    }
     .badge-new {
-      display:inline-block; background-color:var(--secondary);
-      color:#fff; font-size:.75rem; padding:2px 6px;
-      border-radius:4px; margin-left:.5rem;
-      animation:blink 1s infinite;
+      display: inline-block;
+      background-color: var(--secondary);
+      color: #fff;
+      font-size: .75rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: .5rem;
+      animation: blink 1s infinite;
     }
-    @keyframes blink { 0%,100%{opacity:1;}50%{opacity:0;} }
-
+    @keyframes blink {
+      0%,100% { opacity:1; }
+      50%     { opacity:0; }
+    }
+    /* disable all overlays */
+    .overlay, .card:hover .overlay {
+      display: none !important;
+    }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+    }
+    body.dark-mode .modal-content {
+      background: #444;
+      color: #eee;
+    }
+    .modal-content .close {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
     /* Footer */
     footer {
-      background-color:var(--dark); color:#ecf0f1;
-      text-align:center; padding:2rem 1rem; font-size:.9rem;
+      background-color: var(--dark);
+      color: #ecf0f1;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .9rem;
     }
-    footer a { color:var(--primary); text-decoration:none; }
-
-    @media(max-width:600px) { header h1{font-size:2rem;} }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <img src="./assets/47769368.jpeg" alt="Profile Photo">
     <h1>Arkaprabha Basu</h1>
@@ -169,6 +267,7 @@
     <p>Kolkata, India | <a href="mailto:arkaprabha17@gmail.com">arkaprabha17@gmail.com</a></p>
   </header>
 
+  <!-- Navbar -->
   <nav>
     <ul>
       <li><a href="#publications">Publications</a></li>
@@ -184,106 +283,93 @@
     <!-- Publications Section -->
     <section id="publications">
       <h2>Research Publications</h2>
-      <div class="filters">
-        <input type="search" id="search-input" placeholder="Search publications…">
-        <label><input type="checkbox" class="theme-filter" value="theme-llm"> LLM</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-medical"> Medical AI</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-cv"> Computer Vision</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-heritage"> Digital Heritage</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-ml"> ML & Data</label>
-      </div>
-      <div class="masonry">
-        <!-- ...publication cards... -->
-      </div>
+      <!-- … your cards here … -->
     </section>
 
-    <!-- Research Experience (two-column) -->
+    <!-- Research Experience -->
     <section id="research-experience">
-      <h2>Research Experience</nousecta>
-      <div class="grid-2">
-        <div class="card"><div class="card-content">
-          <strong>Alzheimer Medical Report Generation</strong><br>
-          TCG Crest, Kolkata (Feb 2024–Dec 2024)<br>
-          Multimodal explainable AI + LLMs (LLaMa, Gemma‑2, Phi‑3)
-        </div></div>
-        <div class="card"><div class="card-content">
-          <strong>Digital Restoration of Indian Heritage Artefacts</strong><br>
-          ISI Kolkata & University of Hyderabad (Jul 2022–Mar 2023)
-        </div></div>
-      </div>
-    </section>
-
-    <!-- Industry Experience (masonry) -->
-    <section id="industry-experience">
-      <h2>Industry Experience</h2>
+      <h2>Research Experience</h2>
       <div class="masonry">
-        <div class="card"><div class="card-content">
-          <strong>Data Scientist</strong><br>
-          HappyMonk.ai, Bengaluru (Apr 2023–Dec 2023)<br>
-          Re‑ID, Object Detection, Activity Recognition
-        </div></div>
+        <div class="card">
+          <div class="card-content">
+            <strong>Alzheimer Medical Report Generation</strong><br>
+            TCG Crest, Kolkata (Feb 2024 – Dec 2024)<br>
+            Multimodal explainable AI + LLMs (LLaMa, Gemma‑2, Phi‑3)
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <strong>Digital Restoration of Indian Heritage Artefacts</strong><br>
+            ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)
+          </div>
+        </div>
       </div>
     </section>
+    <!-- … rest of your content … -->
+  </div>
 
-    <!-- Education (two-column) -->
-    <section id="education">
-      <h2>Education</nousecta>
-      <div class="grid-2">
-        <div class="card"><div class="card-content">
-          <strong>M.Tech in Computer Science</strong><br>
-          University of Hyderabad (2021–2023) | CGPA: 9.3
-        </div></div>
-        <div class="card"><div class="card-content">
-          <strong>M.S. in Computer Science</strong><br>
-          Pondicherry Central University (2018–2020) | CGPA: 8.74
-        </div></div>
-        <div class="card"><div class="card-content">
-          <strong>B.Sc. in Computer Science</strong><br>
-          Ramakrishna Mission Residential College (2015–2018) | 82.13%
-        </div></div>
-      </div>
-    </section>
-
-    <!-- Thesis Projects (two-column) -->
-    <section id="thesis">
-      <h2>Thesis Projects</nousecta>
-      <div class="grid-2">
-        <div class="card"><div class="card-content">
-          <strong>Temple Tile Reconstruction</strong><br>
-          ISI Kolkata & University of Hyderabad (Jul 2022–Mar 2023)<br>
-          <a href="#" target="_blank">View Thesis</a>
-        </div></div>
-        <div class="card"><div class="card-content">
-          <strong>Handwritten Character Recognition</strong><br>
-          Pondicherry Central University (Dec 2019–May 2020)<br>
-          <a href="#" target="_blank">View Details</a>
-        </div></div>
-      </div>
-    </section>
+  <!-- Abstract Modal -->
+  <div id="abstract-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-text"></p>
+    </div>
   </div>
 
   <footer>
-    &copy; 2025 Arkaprabha Basu | <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank">Google Scholar</a>
+    &copy; 2025 Arkaprabha Basu | <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>
   </footer>
 
   <script>
-    // Toggle dark mode
-    document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('dark-mode');
+    // Dark mode toggle
+    document.getElementById('theme-toggle').onclick = () => {
+      document.body.classList.toggle('dark-mode');
+    };
 
-    // Filtering logic
+    // Fetch citation counts & abstracts from a Google Scholar–scraping Apps Script
+    const scholarEndpoint = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?user=7S_jA3IAAAAJ';
+    fetch(scholarEndpoint)
+      .then(res => res.json())
+      .then(data => {
+        data.papers.forEach(p => {
+          const card = [...document.querySelectorAll('.card')]
+            .find(c => c.dataset.doi === p.doi || c.dataset.title === p.title);
+          if (card) {
+            card.querySelector('.citation-count').textContent = `${p.citationCount} citations`;
+            card.dataset.abstract = p.abstract;
+          }
+        });
+      })
+      .catch(_ => console.warn('Could not load Google Scholar data'));
+
+    // Modal logic
+    const modal = document.getElementById('abstract-modal');
+    document.querySelectorAll('.abstract-btn').forEach(btn => {
+      btn.onclick = e => {
+        const card = e.target.closest('.card');
+        document.getElementById('modal-title').textContent = card.dataset.title;
+        document.getElementById('modal-text').textContent  = card.dataset.abstract;
+        modal.style.display = 'flex';
+      };
+    });
+    modal.querySelector('.close').onclick = () => modal.style.display = 'none';
+    window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
+
+    // Search & theme filters
     const searchInput = document.getElementById('search-input');
     const themeCheckboxes = document.querySelectorAll('.theme-filter');
     function filterCards() {
-      const query = searchInput.value.toLowerCase();
-      const active = [...themeCheckboxes].filter(c=>c.checked).map(c=>c.value);
-      document.querySelectorAll('.card').forEach(card=>{
-        const textMatch = card.textContent.toLowerCase().includes(query);
-        const themeMatch = !active.length || active.some(th=>card.classList.contains(th));
-        card.style.display = (textMatch && themeMatch)?'':'none';
+      const q = searchInput.value.toLowerCase();
+      const active = [...themeCheckboxes].filter(c => c.checked).map(c => c.value);
+      document.querySelectorAll('.card').forEach(card => {
+        const txtMatch = card.textContent.toLowerCase().includes(q);
+        const themeMatch = active.length === 0 || active.some(th => card.classList.contains(th));
+        card.style.display = (txtMatch && themeMatch) ? '' : 'none';
       });
     }
-    searchInput.addEventListener('input',filterCards);
-    themeCheckboxes.forEach(cb=>cb.addEventListener('change',filterCards));
+    searchInput.addEventListener('input', filterCards);
+    themeCheckboxes.forEach(cb => cb.addEventListener('change', filterCards));
   </script>
 </body>
 </html>
