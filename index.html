@@ -14,10 +14,10 @@
       --text: #333;
       --accent-bg: #ecf0f1;
       --border-llm: #8e44ad;
-      --border-med: #e74c3c;
-      --border-vision: #3498db;
+      --border-medical: #e74c3c;
+      --border-cv: #3498db;
       --border-heritage: #f1c40f;
-      --border-data: #2ecc71;
+      --border-ml: #16a085;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     body {
@@ -115,11 +115,11 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
     /* Theme border colors */
-    .theme-llm { border-color: var(--border-llm); }
-    .theme-med { border-color: var(--border-med); }
-    .theme-vision { border-color: var(--border-vision); }
+    .theme-llm      { border-color: var(--border-llm); }
+    .theme-medical  { border-color: var(--border-medical); }
+    .theme-cv       { border-color: var(--border-cv); }
     .theme-heritage { border-color: var(--border-heritage); }
-    .theme-data { border-color: var(--border-data); }
+    .theme-ml       { border-color: var(--border-ml); }
     /* Card content */
     .card-content { padding: 1.5rem; }
     .card h3 { font-size: 1.3rem; margin-bottom: .6rem; color: var(--dark); }
@@ -192,7 +192,8 @@
   <nav>
     <ul>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research-experience">Research Experience</a></li>
+      <li><a href="#industry-experience">Industry Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#thesis">Thesis</a></li>
     </ul>
@@ -206,14 +207,14 @@
       <div class="filters">
         <input type="search" id="search-input" placeholder="Search publications…">
         <label><input type="checkbox" class="theme-filter" value="theme-llm"> LLM</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-med"> Medical</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-vision"> Computer Vision</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-heritage"> Heritage</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-data"> Data Science</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-medical"> Medical AI</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-cv"> Computer Vision</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-heritage"> Digital Heritage</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-ml"> ML & Data</label>
       </div>
       <div class="masonry">
-        <!-- Example card with theme and data-doi -->
-        <div class="card theme-llm" data-doi="10.48550/arXiv.2504.09482" data-title="HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models">
+        <!-- HalluShift -->
+        <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482" data-title="HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models">
           <div class="card-content">
             <h3>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models <span class="badge-new">ACCEPTED</span></h3>
             <p class="publication-details"><strong>Authors:</strong> Sharanya Dasgupta, Sujoy Nath, Arkaprabha Basu, Pourya Shamsolmoali, Swagatam Das</p>
@@ -226,8 +227,8 @@
           </div>
         </div>
 
-        <!-- Repeat for other publications, e.g.: -->
-        <div class="card theme-med" data-doi="10.1609/aaai.v39i28.35281" data-title="From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting">
+        <!-- From Complexity to Clarity -->
+        <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281" data-title="From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting">
           <div class="card-content">
             <h3>From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting <span class="badge-new">ACCEPTED</span></h3>
             <p class="publication-details"><strong>Authors:</strong> Sujoy Nath, Arkaprabha Basu, Kushal Bose, Swagatam Das</p>
@@ -240,9 +241,8 @@
           </div>
         </div>
 
-        <!-- Continue similarly for the rest of your cards... -->
         <!-- Improved Alzheimer’s Detection -->
-        <div class="card theme-med theme-vision" data-doi="10.1007/978-3-031-78195-7_29" data-title="Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion">
+        <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29" data-title="Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion">
           <div class="card-content">
             <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
             <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Raha, Avisek Gupta, Swagatam Das</p>
@@ -256,7 +256,7 @@
         </div>
 
         <!-- Digital Restoration -->
-        <div class="card theme-heritage" data-doi="10.1109/ACCESS.2023.3280639" data-title="Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey">
+        <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639" data-title="Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey">
           <div class="card-content">
             <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
             <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</p>
@@ -269,8 +269,8 @@
           </div>
         </div>
 
-        <!-- Do Pre-processing... -->
-        <div class="card theme-vision" data-doi="10.1109/TAI.2022.3149971" data-title="Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?">
+        <!-- COVID Pre-processing -->
+        <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971" data-title="Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?">
           <div class="card-content">
             <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
             <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Das, Sankha Mullick, Swagatam Das</p>
@@ -283,8 +283,8 @@
           </div>
         </div>
 
-        <!-- On Regenerative... -->
-        <div class="card theme-heritage theme-data" data-doi="10.1007/978-981-99-3250-4_31" data-title="On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach">
+        <!-- Fractal Dimension -->
+        <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31" data-title="On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach">
           <div class="card-content">
             <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
             <p class="publication-details"><strong>Authors:</strong> Sreeya Ghosh, Arkaprabha Basu, Sandip Paul, Swagatam Das, Bhabatosh Chanda</p>
@@ -298,7 +298,7 @@
         </div>
 
         <!-- Face Mask Recognition -->
-        <div class="card theme-vision" data-doi="10.1109/ICCCNT51525.2021.9580061" data-title="Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures">
+        <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061" data-title="Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures">
           <div class="card-content">
             <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
             <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Md Firoj Ali</p>
@@ -311,8 +311,8 @@
           </div>
         </div>
 
-        <!-- Concurrent Density Estimation -->
-        <div class="card theme-data" data-doi="10.48550/arXiv.2312.06591" data-title="Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights">
+        <!-- Wasserstein Autoencoders -->
+        <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591" data-title="Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights">
           <div class="card-content">
             <h3>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</h3>
             <p class="publication-details"><strong>Authors:</strong> Anish Chakrabarty, Arkaprabha Basu, Swagatam Das</p>
@@ -327,9 +327,9 @@
       </div>
     </section>
 
-    <!-- Other sections remain largely unchanged -->
-    <section id="experience">
-      <h2>Experience</h2>
+    <!-- Research Experience -->
+    <section id="research-experience">
+      <h2>Research Experience</h2>
       <div class="masonry">
         <div class="card">
           <div class="card-content">
@@ -344,6 +344,13 @@
             ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Industry Experience -->
+    <section id="industry-experience">
+      <h2>Industry Experience</h2>
+      <div class="masonry">
         <div class="card">
           <div class="card-content">
             <strong>Data Scientist</strong><br>
@@ -399,7 +406,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Arkaprabha Basu | <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank">Google Scholar</a>
+    &copy; 2025 Arkaprabha Basu | <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>
   </footer>
 
   <script>
@@ -408,30 +415,32 @@
       document.body.classList.toggle('dark-mode');
     };
 
-    // Fetch citation counts & abstracts from Semantic Scholar
-    document.querySelectorAll('.card').forEach(card => {
-      const doi = card.dataset.doi;
-      if (!doi) return;
-      const url = `https://api.semanticscholar.org/graph/v1/paper/DOI:${doi}?fields=citationCount,abstract,title`;
-      fetch(url).then(res => res.json()).then(data => {
-        card.querySelector('.citation-count').textContent = `${data.citationCount || 0} citations`;
-        card.dataset.abstract = data.abstract || 'Abstract not available.';
-        card.dataset.title = data.title || card.dataset.title;
-      }).catch(_ => {
-        card.querySelector('.citation-count').textContent = '—';
-        card.dataset.abstract = 'Abstract not available.';
-      });
-    });
+    // Fetch citation counts & abstracts from a Google Scholar–scraping Apps Script
+    // You need to deploy an Apps Script endpoint that scrapes your Google Scholar profile
+    const scholarEndpoint = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?user=7S_jA3IAAAAJ';
+    fetch(scholarEndpoint)
+      .then(res => res.json())
+      .then(data => {
+        // data.papers = [{doi, title, citationCount, abstract}, …]
+        data.papers.forEach(p => {
+          // match by DOI or title
+          const card = [...document.querySelectorAll('.card')]
+            .find(c => c.dataset.doi === p.doi || c.dataset.title === p.title);
+          if (card) {
+            card.querySelector('.citation-count').textContent = `${p.citationCount} citations`;
+            card.dataset.abstract = p.abstract;
+          }
+        });
+      })
+      .catch(_ => console.warn('Could not load Google Scholar data'));
 
     // Modal logic
     const modal = document.getElementById('abstract-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalText  = document.getElementById('modal-text');
     document.querySelectorAll('.abstract-btn').forEach(btn => {
       btn.onclick = e => {
         const card = e.target.closest('.card');
-        modalTitle.textContent = card.dataset.title;
-        modalText.textContent = card.dataset.abstract;
+        document.getElementById('modal-title').textContent = card.dataset.title;
+        document.getElementById('modal-text').textContent  = card.dataset.abstract;
         modal.style.display = 'flex';
       };
     });
@@ -442,14 +451,12 @@
     const searchInput = document.getElementById('search-input');
     const themeCheckboxes = document.querySelectorAll('.theme-filter');
     function filterCards() {
-      const query = searchInput.value.toLowerCase();
-      const activeThemes = [...themeCheckboxes].filter(c => c.checked).map(c => c.value);
+      const q = searchInput.value.toLowerCase();
+      const active = [...themeCheckboxes].filter(c => c.checked).map(c => c.value);
       document.querySelectorAll('.card').forEach(card => {
-        const text = card.textContent.toLowerCase();
-        const matchesText = text.includes(query);
-        const matchesTheme = activeThemes.length === 0 ||
-          activeThemes.some(th => card.classList.contains(th));
-        card.style.display = (matchesText && matchesTheme) ? '' : 'none';
+        const txtMatch = card.textContent.toLowerCase().includes(q);
+        const themeMatch = active.length === 0 || active.some(th => card.classList.contains(th));
+        card.style.display = (txtMatch && themeMatch) ? '' : 'none';
       });
     }
     searchInput.addEventListener('input', filterCards);
