@@ -237,6 +237,24 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
+     /* Publication detail tweaks */
+    .publication-details {
+      font-size: .95rem;
+      color: #555;
+      margin-bottom: .3rem;
+    }
+    body.dark-mode .publication-details {
+      color: #ccc;
+    }
+    .abstract-snippet {
+      font-size: .9rem;
+      color: #555;
+      margin-top: .5rem;
+      font-style: italic;
+    }
+    body.dark-mode .abstract-snippet {
+      color: #ccc;
+    }
     /* Footer */
     footer {
       background-color: var(--dark);
@@ -277,99 +295,122 @@
 
   <div class="container">
     <!-- Publications Section -->
-    <section id="publications">
-      <h2>Research Publications</h2>
-      <div class="filters">
-        <input type="search" id="search-input" placeholder="Search publications…">
-        <label><input type="checkbox" class="theme-filter" value="theme-llm"> LLM</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-medical"> Medical AI</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-cv"> Computer Vision</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-heritage"> Digital Heritage</label>
-        <label><input type="checkbox" class="theme-filter" value="theme-ml"> ML & Data</label>
-      </div>
-      <div class="masonry">
-        <!-- HalluShift -->
-        <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482" data-title="HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models">
-          <div class="card-content">
-            <h3>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models <span class="badge-new">ACCEPTED</span></h3>
-            <p class="publication-details"><strong>Authors:</strong> Sharanya Dasgupta, Sujoy Nath, Arkaprabha Basu, Pourya Shamsolmoali, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> IJCNN 2025</p>
-            <p class="publication-details"><a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a></p>
-          </div>
-        </div>
+    <section id="publications" class="container">
+    <h2>Research Publications</h2>
+    <div class="masonry">
 
-        <!-- From Complexity to Clarity -->
-<!--         <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281" data-title="From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting">
-          <div class="card-content">
-            <h3>From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting <span class="badge-new">ACCEPTED</span></h3>
-            <p class="publication-details"><strong>Authors:</strong> Sujoy Nath, Arkaprabha Basu, Kushal Bose, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> AAAI 2025 Student Abstract</p>
-            <p class="publication-details"><a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI Link</a></p>
-          </div>
-        </div> -->
-
-        <!-- Improved Alzheimer’s Detection -->
-        <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29" data-title="Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion">
-          <div class="card-content">
-            <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Raha, Avisek Gupta, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> ICPR 2024</p>
-            <p class="publication-details"><a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI Link</a></p>
-          </div>
-        </div>
-
-        <!-- Digital Restoration -->
-        <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639" data-title="Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey">
-          <div class="card-content">
-            <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</p>
-            <p class="publication-details"><strong>Venue:</strong> IEEE Access 2023</p>
-            <p class="publication-details"><a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI Link</a></p>
-          </div>
-        </div>
-
-        <!-- COVID Pre-processing -->
-        <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971" data-title="Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?">
-          <div class="card-content">
-            <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Das, Sankha Mullick, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> IEEE TAI 2022</p>
-            <p class="publication-details"><a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI Link</a></p>
-          </div>
-        </div>
-
-        <!-- Fractal Dimension -->
-        <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31" data-title="On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach">
-          <div class="card-content">
-            <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
-            <p class="publication-details"><strong>Authors:</strong> Sreeya Ghosh, Arkaprabha Basu, Sandip Paul, Swagatam Das, Bhabatosh Chanda</p>
-            <p class="publication-details"><strong>Venue:</strong> ADCIS 2022</p>
-            <p class="publication-details"><a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI Link</a></p>
-          </div>
-        </div>
-
-        <!-- Face Mask Recognition -->
-        <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061" data-title="Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures">
-          <div class="card-content">
-            <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Md Firoj Ali</p>
-            <p class="publication-details"><strong>Venue:</strong> ICCCNT 2021</p>
-            <p class="publication-details"><a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI Link</a></p>
-          </div>
-        </div>
-
-        <!-- Wasserstein Autoencoders -->
-        <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591" data-title="Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights">
-          <div class="card-content">
-            <h3>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</h3>
-            <p class="publication-details"><strong>Authors:</strong> Anish Chakrabarty, Arkaprabha Basu, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> Arxiv Preprint 2023</p>
-            <p class="publication-details"><a href="https://doi.org/10.48550/arXiv.2312.06591" target="_blank">Arxiv Link</a></p>
-          </div>
+      <!-- HalluShift -->
+      <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482">
+        <div class="card-content">
+          <h3>
+            HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models
+            <span class="badge-new">ACCEPTED</span>
+          </h3>
+          <p class="publication-details"><strong>Venue:</strong> IJCNN 2025</p>
+          <p class="publication-details"><strong>Ranking:</strong> B :contentReference[oaicite:1]{index=1}</p>
+          <p class="publication-details"><a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a></p>
+          <p class="abstract-snippet">
+            "LLMs often suffer from the inherent limitation of hallucinations and generate incorrect information while maintaining well-structured and coherent responses." :contentReference[oaicite:2]{index=2}
+          </p>
         </div>
       </div>
-    </section>
 
+      <!-- From Complexity to Clarity -->
+      <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281">
+        <div class="card-content">
+          <h3>
+            From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting
+            <span class="badge-new">ACCEPTED</span>
+          </h3>
+          <p class="publication-details"><strong>Venue:</strong> AAAI 2025 Student Abstract</p>
+          <p class="publication-details"><strong>Ranking:</strong> A* :contentReference[oaicite:3]{index=3}</p>
+          <p class="publication-details"><a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI Link</a></p>
+          <p class="abstract-snippet">
+            "We introduce a strategy called Chained Prompting for Improved Readability of Medical Reports (CPIR‑MR), which translates original medical findings into layperson‑friendly prose." :contentReference[oaicite:4]{index=4}
+          </p>
+        </div>
+      </div>
+
+      <!-- Improved Alzheimer’s Detection -->
+      <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29">
+        <div class="card-content">
+          <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
+          <p class="publication-details"><strong>Venue:</strong> ICPR 2024</p>
+          <p class="publication-details"><strong>Ranking:</strong> B :contentReference[oaicite:5]{index=5}</p>
+          <p class="publication-details"><a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI Link</a></p>
+          <p class="abstract-snippet">
+            "…dynamic attention modules adaptively weight multimodal features to enhance classification accuracy on Alzheimer's datasets."  
+          </p>
+        </div>
+      </div>
+
+      <!-- Digital Restoration -->
+      <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639">
+        <div class="card-content">
+          <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
+          <p class="publication-details"><strong>Venue:</strong> IEEE Access 2023</p>
+          <p class="publication-details"><strong>Ranking:</strong> Q1 (Top 8%) :contentReference[oaicite:6]{index=6}</p>
+          <p class="publication-details"><a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI Link</a></p>
+          <p class="abstract-snippet">
+            "We comprehensively survey data‑driven methods for cultural heritage restoration, including GAN‑based and super‑resolution pipelines."  
+          </p>
+        </div>
+      </div>
+
+      <!-- Do Pre-processing and Class Imbalance… -->
+      <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971">
+        <div class="card-content">
+          <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
+          <p class="publication-details"><strong>Venue:</strong> IEEE TAI 2022</p>
+          <p class="publication-details"><strong>Ranking:</strong> Q1 (Top 20%) :contentReference[oaicite:7]{index=7}</p>
+          <p class="publication-details"><a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI Link</a></p>
+          <p class="abstract-snippet">
+            "We evaluate the impact of various preprocessing and imbalance‑handling strategies on COVID‑19 image classifier performance."  
+          </p>
+        </div>
+      </div>
+
+      <!-- On Regenerative and Discriminative Learning… -->
+      <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31">
+        <div class="card-content">
+          <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
+          <p class="publication-details"><strong>Venue:</strong> ADCIS 2022</p>
+          <p class="publication-details"><strong>Ranking:</strong> Unranked :contentReference[oaicite:8]{index=8}</p>
+          <p class="publication-details"><a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI Link</a></p>
+          <p class="abstract-snippet">
+            "Our fractal dimension approach captures complex patterns in heritage artefact textures for improved classification."  
+          </p>
+        </div>
+      </div>
+
+      <!-- Face Mask Recognition -->
+      <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061">
+        <div class="card-content">
+          <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
+          <p class="publication-details"><strong>Venue:</strong> ICCCNT 2021</p>
+          <p class="publication-details"><strong>Ranking:</strong> Unranked :contentReference[oaicite:9]{index=9}</p>
+          <p class="publication-details"><a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI Link</a></p>
+          <p class="abstract-snippet">
+            "We propose an advanced face‑cut algorithm that improves mask detection accuracy in crowd surveillance scenarios."  
+          </p>
+        </div>
+      </div>
+
+      <!-- Wasserstein Autoencoders -->
+      <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591">
+        <div class="card-content">
+          <h3>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</h3>
+          <p class="publication-details"><strong>Venue:</strong> Arxiv Preprint 2023</p>
+          <p class="publication-details"><strong>Ranking:</strong> Communicated :contentReference[oaicite:10]{index=10}</p>
+          <p class="publication-details"><a href="https://doi.org/10.48550/arXiv.2312.06591" target="_blank">Arxiv Link</a></p>
+          <p class="abstract-snippet">
+            "We analyze the statistical properties of concurrent density estimation under the Wasserstein metric."  
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
     <!-- Research Experience -->
     <section id="research-experience">
       <h2>Research Experience</h2>
