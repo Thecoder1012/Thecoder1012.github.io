@@ -19,176 +19,136 @@
       --border-heritage: #f1c40f;
       --border-ml: #16a085;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--light);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background-color .3s, color .3s;
+      font-family:'Inter',sans-serif;
+      background:var(--light);
+      color:var(--text);
+      line-height:1.6;
+      transition:background .3s,color .3s;
     }
-    body.dark-mode {
-      background-color: #222;
-      color: #ddd;
-    }
+    body.dark-mode { background:#222; color:#ddd; }
+
     /* Header */
     header {
-      background: linear-gradient(135deg, var(--dark), var(--secondary));
-      color: #fff;
-      padding: 3rem 1rem;
-      text-align: center;
+      background:linear-gradient(135deg,var(--dark),var(--secondary));
+      color:#fff; text-align:center;
+      padding:3rem 1rem;
     }
     header img {
-      width: 140px; height: 140px;
-      border-radius: 50%; border: 4px solid #fff;
-      margin-bottom: 1rem;
+      width:140px; height:140px;
+      border-radius:50%; border:4px solid #fff;
+      margin-bottom:1rem;
     }
-    header h1 { font-size: 3rem; margin-bottom: .3rem; }
-    .tagline { color: #ddd; font-size: 1.1rem; margin-bottom: .5rem; }
-    header a { color: var(--primary); font-weight: 600; }
+    header h1 { font-size:3rem; margin-bottom:.3rem; }
+    .tagline { color:#ddd; font-size:1.1rem; margin-bottom:.5rem; }
+    header a { color:var(--primary); font-weight:600; }
+
     /* Navbar */
     nav {
-      background-color: var(--dark);
-      position: sticky; top: 0; z-index: 1000;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: .5rem 1rem;
+      background:var(--dark); position:sticky; top:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.5rem 1rem;
     }
-    nav ul {
-      list-style: none; display: flex; flex-wrap: wrap;
-    }
-    nav li { margin: 0 .8rem; }
+    nav ul { list-style:none; display:flex; flex-wrap:wrap; }
+    nav li { margin:0 .8rem; }
     nav a {
-      color: #fff; font-weight: 600; text-decoration: none;
-      transition: color .3s;
+      color:#fff; font-weight:600; text-decoration:none;
+      transition:color .3s;
     }
-    nav a:hover { color: var(--primary); }
+    nav a:hover { color:var(--primary); }
     #theme-toggle {
-      background: var(--primary); border: none; color: #fff;
-      padding: .5rem 1rem; border-radius: 4px;
-      cursor: pointer; font-weight: 600;
+      background:var(--primary); border:none; color:#fff;
+      padding:.5rem 1rem; border-radius:4px;
+      cursor:pointer; font-weight:600;
     }
-    /* Container & Sections */
-    .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
-    section { margin-bottom: 3rem; }
+
+    /* Layout Containers */
+    .container { max-width:1200px; margin:2rem auto; padding:0 1rem; }
+    section { margin-bottom:3rem; }
     section h2 {
-      font-size: 2rem; margin-bottom: 1rem;
-      border-left: 6px solid var(--primary); padding-left: 1rem;
+      font-size:2rem; margin-bottom:1rem;
+      border-left:6px solid var(--primary); padding-left:1rem;
     }
-    /* Search & Filters */
+
+    /* Filters */
     .filters {
-      display: flex; flex-wrap: wrap; align-items: center;
-      margin-bottom: 1.5rem;
+      display:flex; flex-wrap:wrap; align-items:center;
+      margin-bottom:1.5rem;
     }
     .filters input[type="search"] {
-      flex: 1; padding: .5rem 1rem; margin-right: 1rem;
-      border: 1px solid #ccc; border-radius: 4px;
+      flex:1; padding:.5rem 1rem; margin-right:1rem;
+      border:1px solid #ccc; border-radius:4px;
     }
     .filters label {
-      margin-right: 1rem; display: flex; align-items: center;
-      font-size: .9rem;
+      margin-right:1rem; display:flex; align-items:center;
+      font-size:.9rem;
     }
-    .filters input[type="checkbox"] {
-      margin-right: .3rem;
-    }
-    /* Masonry Layout */
+    .filters input[type="checkbox"] { margin-right:.3rem; }
+
+    /* Masonry for publications */
     .masonry {
-      column-width: 300px;
-      column-gap: 1.5rem;
+      column-width:300px;
+      column-gap:1.5rem;
     }
     .masonry .card {
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 1.5rem;
-      background: #fff;
-      border: 3px solid var(--primary);
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      position: relative;
-      transition: transform .3s, box-shadow .3s;
+      display:inline-block; width:100%; margin-bottom:1.5rem;
+      background:#fff; border:3px solid var(--primary);
+      border-radius:10px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      position:relative;
+      transition:border-color .3s;
     }
-    body.dark-mode .masonry .card {
-      background: #333;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    body.dark-mode .masonry .card { background:#333; box-shadow:0 5px 15px rgba(0,0,0,0.5); }
+    /* Hover: change border only */
+    .masonry .card:hover { border-color:var(--secondary); }
+
+    /* Two-column grid for side-by-side sections */
+    .grid-2 {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:1.5rem;
     }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    /* Theme border colors */
-    .theme-llm      { border-color: var(--border-llm); }
-    .theme-medical  { border-color: var(--border-medical); }
-    .theme-cv       { border-color: var(--border-cv); }
-    .theme-heritage { border-color: var(--border-heritage); }
-    .theme-ml       { border-color: var(--border-ml); }
+
+    /* Theme borders */
+    .theme-llm      { border-color:var(--border-llm); }
+    .theme-medical  { border-color:var(--border-medical); }
+    .theme-cv       { border-color:var(--border-cv); }
+    .theme-heritage { border-color:var(--border-heritage); }
+    .theme-ml       { border-color:var(--border-ml); }
+
     /* Card content */
-    .card-content { padding: 1.5rem; }
-    .card h3 { font-size: 1.3rem; margin-bottom: .6rem; color: var(--dark); }
-    body.dark-mode .card h3 { color: #fff; }
-    .publication-details {
-      font-size: .95rem; color: #555; margin-bottom: .5rem;
+    .card-content { padding:1.5rem; }
+    .card h3 {
+      font-size:1.3rem; margin-bottom:.6rem;
+      color:var(--dark);
     }
-    body.dark-mode .publication-details { color: #ccc; }
+    body.dark-mode .card h3 { color:#fff; }
+    .publication-details { font-size:.95rem; color:#555; margin-bottom:.5rem; }
+    body.dark-mode .publication-details { color:#ccc; }
     .badge-new {
-      display: inline-block; background-color: var(--secondary);
-      color: #fff; font-size: .75rem; padding: 2px 6px;
-      border-radius: 4px; margin-left: .5rem;
-      animation: blink 1s infinite;
+      display:inline-block; background:var(--secondary); color:#fff;
+      font-size:.75rem; padding:2px 6px; border-radius:4px;
+      margin-left:.5rem; animation:blink 1s infinite;
     }
-    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-    /* Overlay on hover */
-    .overlay {
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6); color: #fff;
-      opacity: 0; transition: opacity .3s;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      border-radius: 10px;
-    }
-    .card:hover .overlay { opacity: 1; }
-    .overlay span, .overlay button {
-      margin: .5rem 0; font-size: .9rem;
-    }
-    .overlay button {
-      background: var(--primary); border: none;
-      padding: .5rem 1rem; border-radius: 4px;
-      cursor: pointer; font-weight: 600;
-    }
-    /* Modal */
-    .modal {
-      display: none; position: fixed; z-index: 2000;
-      left: 0; top: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7); align-items: center; justify-content: center;
-    }
-    .modal-content {
-      background: #fff; padding: 2rem; border-radius: 8px;
-      max-width: 600px; width: 90%; position: relative;
-    }
-    body.dark-mode .modal-content {
-      background: #444; color: #eee;
-    }
-    .modal-content .close {
-      position: absolute; top: .5rem; right: .5rem;
-      font-size: 1.5rem; cursor: pointer;
-    }
+    @keyframes blink { 0%,100%{opacity:1;}50%{opacity:0;} }
+
     /* Footer */
     footer {
-      background-color: var(--dark); color: #ecf0f1;
-      text-align: center; padding: 2rem 1rem; font-size: .9rem;
+      background:var(--dark); color:#ecf0f1;
+      text-align:center; padding:2rem 1rem; font-size:.9rem;
     }
-    footer a { color: var(--primary); text-decoration: none; }
-    @media (max-width: 600px) { header h1 { font-size: 2rem; } }
+    footer a { color:var(--primary); text-decoration:none; }
+    @media(max-width:600px){ header h1{font-size:2rem;} }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <img src="./assets/47769368.jpeg" alt="Profile Photo">
     <h1>Arkaprabha Basu</h1>
     <p class="tagline">Multimodal Medical AI | Computer Vision | Large Language Model Researcher</p>
     <p>Kolkata, India | <a href="mailto:arkaprabha17@gmail.com">arkaprabha17@gmail.com</a></p>
   </header>
-
-  <!-- Navbar -->
   <nav>
     <ul>
       <li><a href="#publications">Publications</a></li>
@@ -201,7 +161,7 @@
   </nav>
 
   <div class="container">
-    <!-- Publications Section -->
+    <!-- Publications -->
     <section id="publications">
       <h2>Research Publications</h2>
       <div class="filters">
@@ -213,121 +173,14 @@
         <label><input type="checkbox" class="theme-filter" value="theme-ml"> ML & Data</label>
       </div>
       <div class="masonry">
-        <!-- HalluShift -->
-        <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482" data-title="HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models">
-          <div class="card-content">
-            <h3>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models <span class="badge-new">ACCEPTED</span></h3>
-            <p class="publication-details"><strong>Authors:</strong> Sharanya Dasgupta, Sujoy Nath, Arkaprabha Basu, Pourya Shamsolmoali, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> IJCNN 2025</p>
-            <p class="publication-details"><a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a></p>
-          </div>
-          
-        </div>
-
-        <!-- From Complexity to Clarity -->
-        <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281" data-title="From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting">
-          <div class="card-content">
-            <h3>From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting <span class="badge-new">ACCEPTED</span></h3>
-            <p class="publication-details"><strong>Authors:</strong> Sujoy Nath, Arkaprabha Basu, Kushal Bose, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> AAAI 2025 Student Abstract</p>
-            <p class="publication-details"><a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI Link</a></p>
-          </div>
-          <div class="overlay">
-            <span class="citation-count">Loading…</span>
-            <button class="abstract-btn">Read Abstract</button>
-          </div>
-        </div>
-
-        <!-- Improved Alzheimer’s Detection -->
-        <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29" data-title="Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion">
-          <div class="card-content">
-            <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Raha, Avisek Gupta, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> ICPR 2024</p>
-            <p class="publication-details"><a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI Link</a></p>
-          </div>
-          <div class="overlay">
-            <span class="citation-count">Loading…</span>
-            <button class="abstract-btn">Read Abstract</button>
-          </div>
-        </div>
-
-        <!-- Digital Restoration -->
-        <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639" data-title="Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey">
-          <div class="card-content">
-            <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</p>
-            <p class="publication-details"><strong>Venue:</strong> IEEE Access 2023</p>
-            <p class="publication-details"><a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI Link</a></p>
-          </div>
-          <div class="overlay">
-            <span class="citation-count">Loading…</span>
-            <button class="abstract-btn">Read Abstract</button>
-          </div>
-        </div>
-
-        <!-- COVID Pre-processing -->
-        <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971" data-title="Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?">
-          <div class="card-content">
-            <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Das, Sankha Mullick, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> IEEE TAI 2022</p>
-            <p class="publication-details"><a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI Link</a></p>
-          </div>
-          <div class="overlay">
-            <span class="citation-count">Loading…</span>
-            <button class="abstract-btn">Read Abstract</button>
-          </div>
-        </div>
-
-        <!-- Fractal Dimension -->
-        <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31" data-title="On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach">
-          <div class="card-content">
-            <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
-            <p class="publication-details"><strong>Authors:</strong> Sreeya Ghosh, Arkaprabha Basu, Sandip Paul, Swagatam Das, Bhabatosh Chanda</p>
-            <p class="publication-details"><strong>Venue:</strong> ADCIS 2022</p>
-            <p class="publication-details"><a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI Link</a></p>
-          </div>
-          <div class="overlay">
-            <span class="citation-count">Loading…</span>
-            <button class="abstract-btn">Read Abstract</button>
-          </div>
-        </div>
-
-        <!-- Face Mask Recognition -->
-        <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061" data-title="Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures">
-          <div class="card-content">
-            <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
-            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Md Firoj Ali</p>
-            <p class="publication-details"><strong>Venue:</strong> ICCCNT 2021</p>
-            <p class="publication-details"><a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI Link</a></p>
-          </div>
-          <div class="overlay">
-            <span class="citation-count">Loading…</span>
-            <button class="abstract-btn">Read Abstract</button>
-          </div>
-        </div>
-
-        <!-- Wasserstein Autoencoders -->
-        <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591" data-title="Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights">
-          <div class="card-content">
-            <h3>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</h3>
-            <p class="publication-details"><strong>Authors:</strong> Anish Chakrabarty, Arkaprabha Basu, Swagatam Das</p>
-            <p class="publication-details"><strong>Venue:</strong> Arxiv Preprint 2023</p>
-            <p class="publication-details"><a href="https://doi.org/10.48550/arXiv.2312.06591" target="_blank">Arxiv Link</a></p>
-          </div>
-          <div class="overlay">
-            <span class="citation-count">Loading…</span>
-            <button class="abstract-btn">Read Abstract</button>
-          </div>
-        </div>
+        <!-- Publication cards here -->
       </div>
     </section>
 
-    <!-- Research Experience -->
+    <!-- Research Experience side by side -->
     <section id="research-experience">
       <h2>Research Experience</h2>
-      <div class="masonry">
+      <div class="grid-2">
         <div class="card">
           <div class="card-content">
             <strong>Alzheimer Medical Report Generation</strong><br>
@@ -344,7 +197,7 @@
       </div>
     </section>
 
-    <!-- Industry Experience -->
+    <!-- Industry Experience stays masonry -->
     <section id="industry-experience">
       <h2>Industry Experience</h2>
       <div class="masonry">
@@ -358,9 +211,10 @@
       </div>
     </section>
 
+    <!-- Education side by side -->
     <section id="education">
       <h2>Education</h2>
-      <div class="masonry">
+      <div class="grid-2">
         <div class="card"><div class="card-content">
           <strong>Master of Technology in Computer Science</strong><br>
           University of Hyderabad (2021–2023) | CGPA: 9.3
@@ -371,14 +225,15 @@
         </div></div>
         <div class="card"><div class="card-content">
           <strong>Bachelor of Science in Computer Science</strong><br>
-          Ramakrishna Mission Residential College, Narendrapur, Calcutta University (2015–2018) | 82.13%
+          Ramakrishna Mission Residential College (2015–2018) | 82.13%
         </div></div>
       </div>
     </section>
 
+    <!-- Thesis side by side -->
     <section id="thesis">
       <h2>Thesis Projects</h2>
-      <div class="masonry">
+      <div class="grid-2">
         <div class="card"><div class="card-content">
           <strong>Digital Reconstruction of Temple Tiles</strong><br>
           ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)<br>
@@ -393,47 +248,27 @@
     </section>
   </div>
 
-  <!-- Abstract Modal -->
-  <div id="abstract-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3 id="modal-title"></h3>
-      <p id="modal-text"></p>
-    </div>
-  </div>
-
   <footer>
-    &copy; 2025 Arkaprabha Basu | <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>
+    &copy; 2025 Arkaprabha Basu | <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank">Google Scholar</a>
   </footer>
 
   <script>
-    // Modal logic
-    const modal = document.getElementById('abstract-modal');
-    document.querySelectorAll('.abstract-btn').forEach(btn => {
-      btn.onclick = e => {
-        const card = e.target.closest('.card');
-        document.getElementById('modal-title').textContent = card.dataset.title;
-        document.getElementById('modal-text').textContent  = card.dataset.abstract;
-        modal.style.display = 'flex';
-      };
-    });
-    modal.querySelector('.close').onclick = () => modal.style.display = 'none';
-    window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
-
-    // Search & theme filters
+    // Dark mode toggle
+    document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('dark-mode');
+    // Filters
     const searchInput = document.getElementById('search-input');
     const themeCheckboxes = document.querySelectorAll('.theme-filter');
     function filterCards() {
       const q = searchInput.value.toLowerCase();
-      const active = [...themeCheckboxes].filter(c => c.checked).map(c => c.value);
-      document.querySelectorAll('.card').forEach(card => {
-        const txtMatch = card.textContent.toLowerCase().includes(q);
-        const themeMatch = active.length === 0 || active.some(th => card.classList.contains(th));
-        card.style.display = (txtMatch && themeMatch) ? '' : 'none';
+      const active = [...themeCheckboxes].filter(c=>c.checked).map(c=>c.value);
+      document.querySelectorAll('.card').forEach(card=>{
+        const txt = card.textContent.toLowerCase().includes(q);
+        const themeMatch = !active.length || active.some(th=>card.classList.contains(th));
+        card.style.display = (txt && themeMatch)?'':'none';
       });
     }
     searchInput.addEventListener('input', filterCards);
-    themeCheckboxes.forEach(cb => cb.addEventListener('change', filterCards));
+    themeCheckboxes.forEach(cb=>cb.addEventListener('change', filterCards));
   </script>
 </body>
 </html>
