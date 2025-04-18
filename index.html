@@ -410,30 +410,6 @@
   </footer>
 
   <script>
-    // Dark mode toggle
-    document.getElementById('theme-toggle').onclick = () => {
-      document.body.classList.toggle('dark-mode');
-    };
-
-    // Fetch citation counts & abstracts from a Google Scholar–scraping Apps Script
-    // You need to deploy an Apps Script endpoint that scrapes your Google Scholar profile
-    const scholarEndpoint = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?user=7S_jA3IAAAAJ';
-    fetch(scholarEndpoint)
-      .then(res => res.json())
-      .then(data => {
-        // data.papers = [{doi, title, citationCount, abstract}, …]
-        data.papers.forEach(p => {
-          // match by DOI or title
-          const card = [...document.querySelectorAll('.card')]
-            .find(c => c.dataset.doi === p.doi || c.dataset.title === p.title);
-          if (card) {
-            card.querySelector('.citation-count').textContent = `${p.citationCount} citations`;
-            card.dataset.abstract = p.abstract;
-          }
-        });
-      })
-      .catch(_ => console.warn('Could not load Google Scholar data'));
-
     // Modal logic
     const modal = document.getElementById('abstract-modal');
     document.querySelectorAll('.abstract-btn').forEach(btn => {
