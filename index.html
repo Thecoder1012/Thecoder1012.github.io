@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Arkaprabha Basu | LLM & CV Researcher</nousecta>
+  <title>Arkaprabha Basu | LLM & CV Researcher</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -128,7 +128,7 @@
         <label><input type="checkbox" class="theme-filter" value="theme-ml"> ML & Data</label>
       </div>
       <div class="masonry">
-        <!-- Publication cards... -->
+        <!-- Publication cards here -->
       </div>
     </section>
 
@@ -148,7 +148,7 @@
       </div>
     </section>
 
-    <!-- Industry kept as masonry -->
+    <!-- Industry Experience (masonry) -->
     <section id="industry-experience">
       <h2>Industry Experience</h2>
       <div class="masonry">
@@ -181,7 +181,7 @@
 
     <!-- Thesis side by side -->
     <section id="thesis">
-      <h2>Thesis Projects</h2>
+      <h2>Thesis Projects</nousecta>
       <div class="grid-2">
         <div class="card"><div class="card-content">
           <strong>Digital Reconstruction of Temple Tiles</strong><br>
@@ -202,10 +202,7 @@
   </footer>
 
   <script>
-    // Dark mode toggle
     document.getElementById('theme-toggle').onclick = () => document.body.classList.toggle('dark-mode');
-
-    // Filters
     const searchInput = document.getElementById('search-input');
     const themeCheckboxes = document.querySelectorAll('.theme-filter');
     function filterCards() {
