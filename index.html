@@ -19,7 +19,14 @@
       --border-heritage: #f1c40f;
       --border-ml: #16a085;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--light);
@@ -31,6 +38,7 @@
       background-color: #222;
       color: #ddd;
     }
+
     /* Header */
     header {
       background: linear-gradient(135deg, var(--dark), var(--secondary));
@@ -46,6 +54,7 @@
     header h1 { font-size: 3rem; margin-bottom: .3rem; }
     .tagline { color: #ddd; font-size: 1.1rem; margin-bottom: .5rem; }
     header a { color: var(--primary); font-weight: 600; }
+
     /* Navbar */
     nav {
       background-color: var(--dark);
@@ -67,6 +76,7 @@
       padding: .5rem 1rem; border-radius: 4px;
       cursor: pointer; font-weight: 600;
     }
+
     /* Container & Sections */
     .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
     section { margin-bottom: 3rem; }
@@ -74,6 +84,7 @@
       font-size: 2rem; margin-bottom: 1rem;
       border-left: 6px solid var(--primary); padding-left: 1rem;
     }
+
     /* Search & Filters */
     .filters {
       display: flex; flex-wrap: wrap; align-items: center;
@@ -90,6 +101,7 @@
     .filters input[type="checkbox"] {
       margin-right: .3rem;
     }
+
     /* Masonry Layout */
     .masonry {
       column-width: 300px;
@@ -104,37 +116,36 @@
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       position: relative;
-      /* only transition border on hover now */
+      /* only border-color transitions now */
       transition: border-color .3s;
     }
     body.dark-mode .masonry .card {
       background: #333;
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
-    /* remove transform & shadow on hover; only change border color */
+    /* on hover: only border color changes */
     .masonry .card:hover {
-      transform: none !important;
-      box-shadow: none !important;
-      border-color: var(--primary) !important;
+      border-color: var(--primary);
     }
-    /* disable overlay entirely */
-    .overlay {
-      display: none !important;
-    }
+
     /* Theme border colors */
     .theme-llm      { border-color: var(--border-llm); }
     .theme-medical  { border-color: var(--border-medical); }
     .theme-cv       { border-color: var(--border-cv); }
     .theme-heritage { border-color: var(--border-heritage); }
     .theme-ml       { border-color: var(--border-ml); }
+
     /* Card content */
     .card-content { padding: 1.5rem; }
     .card h3 { font-size: 1.3rem; margin-bottom: .6rem; color: var(--dark); }
     body.dark-mode .card h3 { color: #fff; }
-    .publication-details {
-      font-size: .95rem; color: #555; margin-bottom: .5rem;
+
+    /* hide subtitles and overlays entirely */
+    .publication-details,
+    .overlay {
+      display: none !important;
     }
-    body.dark-mode .publication-details { color: #ccc; }
+
     .badge-new {
       display: inline-block; background-color: var(--secondary);
       color: #fff; font-size: .75rem; padding: 2px 6px;
@@ -142,30 +153,17 @@
       animation: blink 1s infinite;
     }
     @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-    /* Modal */
-    .modal {
-      display: none; position: fixed; z-index: 2000;
-      left: 0; top: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7); align-items: center; justify-content: center;
-    }
-    .modal-content {
-      background: #fff; padding: 2rem; border-radius: 8px;
-      max-width: 600px; width: 90%; position: relative;
-    }
-    body.dark-mode .modal-content {
-      background: #444; color: #eee;
-    }
-    .modal-content .close {
-      position: absolute; top: .5rem; right: .5rem;
-      font-size: 1.5rem; cursor: pointer;
-    }
+
     /* Footer */
     footer {
       background-color: var(--dark); color: #ecf0f1;
       text-align: center; padding: 2rem 1rem; font-size: .9rem;
     }
     footer a { color: var(--primary); text-decoration: none; }
-    @media (max-width: 600px) { header h1 { font-size: 2rem; } }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -202,7 +200,62 @@
         <label><input type="checkbox" class="theme-filter" value="theme-ml"> ML & Data</label>
       </div>
       <div class="masonry">
-        <!-- cards here… -->
+        <!-- HalluShift -->
+        <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482" data-title="HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models">
+          <div class="card-content">
+            <h3>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models <span class="badge-new">ACCEPTED</span></h3>
+            <!-- subtitles and overlay are hidden via CSS -->
+          </div>
+        </div>
+
+        <!-- From Complexity to Clarity -->
+        <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281" data-title="From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting">
+          <div class="card-content">
+            <h3>From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting <span class="badge-new">ACCEPTED</span></h3>
+          </div>
+        </div>
+
+        <!-- Improved Alzheimer’s Detection -->
+        <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29" data-title="Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion">
+          <div class="card-content">
+            <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
+          </div>
+        </div>
+
+        <!-- Digital Restoration -->
+        <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639" data-title="Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey">
+          <div class="card-content">
+            <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
+          </div>
+        </div>
+
+        <!-- COVID Pre-processing -->
+        <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971" data-title="Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?">
+          <div class="card-content">
+            <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
+          </div>
+        </div>
+
+        <!-- Fractal Dimension -->
+        <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31" data-title="On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach">
+          <div class="card-content">
+            <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
+          </div>
+        </div>
+
+        <!-- Face Mask Recognition -->
+        <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061" data-title="Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures">
+          <div class="card-content">
+            <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
+          </div>
+        </div>
+
+        <!-- Wasserstein Autoencoders -->
+        <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591" data-title="Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights">
+          <div class="card-content">
+            <h3>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</h3>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -210,7 +263,19 @@
     <section id="research-experience">
       <h2>Research Experience</h2>
       <div class="masonry">
-        <!-- cards here… -->
+        <div class="card">
+          <div class="card-content">
+            <strong>Alzheimer Medical Report Generation</strong><br>
+            TCG Crest, Kolkata (Feb 2024 – Dec 2024)<br>
+            Multimodal explainable AI + LLMs (LLaMa, Gemma‑2, Phi‑3)
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <strong>Digital Restoration of Indian Heritage Artefacts</strong><br>
+            ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)
+          </div>
+        </div>
       </div>
     </section>
 
@@ -218,34 +283,50 @@
     <section id="industry-experience">
       <h2>Industry Experience</h2>
       <div class="masonry">
-        <!-- cards here… -->
+        <div class="card">
+          <div class="card-content">
+            <strong>Data Scientist</strong><br>
+            HappyMonk.ai, Bengaluru (Apr 2023 – Dec 2023)<br>
+            Re‑ID, Object Detection, Activity Recognition
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Education -->
+    <!-- Education, Thesis, etc. (unchanged) -->
     <section id="education">
       <h2>Education</h2>
       <div class="masonry">
-        <!-- cards here… -->
+        <div class="card"><div class="card-content">
+          <strong>Master of Technology in Computer Science</strong><br>
+          University of Hyderabad (2021–2023) | CGPA: 9.3
+        </div></div>
+        <div class="card"><div class="card-content">
+          <strong>Master of Science in Computer Science</strong><br>
+          Pondicherry Central University (2018–2020) | CGPA: 8.74
+        </div></div>
+        <div class="card"><div class="card-content">
+          <strong>Bachelor of Science in Computer Science</strong><br>
+          Ramakrishna Mission Residential College, Narendrapur, Calcutta University (2015–2018) | 82.13%
+        </div></div>
       </div>
     </section>
 
-    <!-- Thesis -->
     <section id="thesis">
       <h2>Thesis Projects</h2>
       <div class="masonry">
-        <!-- cards here… -->
+        <div class="card"><div class="card-content">
+          <strong>Digital Reconstruction of Temple Tiles</strong><br>
+          ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)<br>
+          <a href="https://drive.google.com/file/d/1MAN2eXrhBumW84sWI7jWOMl7L6v8HW4V/view" target="_blank">View Thesis</a>
+        </div></div>
+        <div class="card"><div class="card-content">
+          <strong>Handwritten Character Recognition</strong><br>
+          Pondicherry Central University (Dec 2019 – May 2020)<br>
+          <a href="https://docs.google.com/document/d/1zbNwPOIlzSrv8lTJmcKWS0HCDQ9JRz0c/edit" target="_blank">View Details</a>
+        </div></div>
       </div>
     </section>
-  </div>
-
-  <!-- Abstract Modal -->
-  <div id="abstract-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3 id="modal-title"></h3>
-      <p id="modal-text"></p>
-    </div>
   </div>
 
   <footer>
@@ -258,7 +339,7 @@
       document.body.classList.toggle('dark-mode');
     };
 
-    // Search & theme filters
+    // Search & theme filters (unchanged)
     const searchInput = document.getElementById('search-input');
     const themeCheckboxes = document.querySelectorAll('.theme-filter');
     function filterCards() {
