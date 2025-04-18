@@ -152,14 +152,14 @@
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       position: relative;
-      /* only border-color animates now */
+      /* only animate border-color */
       transition: border-color .3s;
     }
     body.dark-mode .masonry .card {
       background: #333;
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
-    /* on hover, only border changes */
+    /* on hover, only border changes color */
     .masonry .card:hover {
       border-color: var(--primary);
     }
@@ -203,10 +203,8 @@
       0%,100% { opacity:1; }
       50%     { opacity:0; }
     }
-    /* disable all overlays */
-    .overlay, .card:hover .overlay {
-      display: none !important;
-    }
+    /* disable overlays */
+    .overlay { display: none !important; }
     /* Modal */
     .modal {
       display: none;
@@ -252,9 +250,7 @@
       text-decoration: none;
     }
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+      header h1 { font-size: 2rem; }
     }
   </style>
 </head>
@@ -283,7 +279,95 @@
     <!-- Publications Section -->
     <section id="publications">
       <h2>Research Publications</h2>
-      <!-- … your cards here … -->
+      <div class="filters">
+        <input type="search" id="search-input" placeholder="Search publications…">
+        <label><input type="checkbox" class="theme-filter" value="theme-llm"> LLM</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-medical"> Medical AI</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-cv"> Computer Vision</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-heritage"> Digital Heritage</label>
+        <label><input type="checkbox" class="theme-filter" value="theme-ml"> ML & Data</label>
+      </div>
+      <div class="masonry">
+        <!-- HalluShift -->
+        <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482" data-title="HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models">
+          <div class="card-content">
+            <h3>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models <span class="badge-new">ACCEPTED</span></h3>
+            <p class="publication-details"><strong>Authors:</strong> Sharanya Dasgupta, Sujoy Nath, Arkaprabha Basu, Pourya Shamsolmoali, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> IJCNN 2025</p>
+            <p class="publication-details"><a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a></p>
+          </div>
+        </div>
+
+        <!-- From Complexity to Clarity -->
+        <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281" data-title="From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting">
+          <div class="card-content">
+            <h3>From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting <span class="badge-new">ACCEPTED</span></h3>
+            <p class="publication-details"><strong>Authors:</strong> Sujoy Nath, Arkaprabha Basu, Kushal Bose, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> AAAI 2025 Student Abstract</p>
+            <p class="publication-details"><a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI Link</a></p>
+          </div>
+        </div>
+
+        <!-- Improved Alzheimer’s Detection -->
+        <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29" data-title="Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion">
+          <div class="card-content">
+            <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Raha, Avisek Gupta, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> ICPR 2024</p>
+            <p class="publication-details"><a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI Link</a></p>
+          </div>
+        </div>
+
+        <!-- Digital Restoration -->
+        <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639" data-title="Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey">
+          <div class="card-content">
+            <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</p>
+            <p class="publication-details"><strong>Venue:</strong> IEEE Access 2023</p>
+            <p class="publication-details"><a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI Link</a></p>
+          </div>
+        </div>
+
+        <!-- COVID Pre-processing -->
+        <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971" data-title="Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?">
+          <div class="card-content">
+            <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Das, Sankha Mullick, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> IEEE TAI 2022</p>
+            <p class="publication-details"><a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI Link</a></p>
+          </div>
+        </div>
+
+        <!-- Fractal Dimension -->
+        <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31" data-title="On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach">
+          <div class="card-content">
+            <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
+            <p class="publication-details"><strong>Authors:</strong> Sreeya Ghosh, Arkaprabha Basu, Sandip Paul, Swagatam Das, Bhabatosh Chanda</p>
+            <p class="publication-details"><strong>Venue:</strong> ADCIS 2022</p>
+            <p class="publication-details"><a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI Link</a></p>
+          </div>
+        </div>
+
+        <!-- Face Mask Recognition -->
+        <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061" data-title="Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures">
+          <div class="card-content">
+            <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Md Firoj Ali</p>
+            <p class="publication-details"><strong>Venue:</strong> ICCCNT 2021</p>
+            <p class="publication-details"><a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI Link</a></p>
+          </div>
+        </div>
+
+        <!-- Wasserstein Autoencoders -->
+        <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591" data-title="Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights">
+          <div class="card-content">
+            <h3>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</h3>
+            <p class="publication-details"><strong>Authors:</strong> Anish Chakrabarty, Arkaprabha Basu, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> Arxiv Preprint 2023</p>
+            <p class="publication-details"><a href="https://doi.org/10.48550/arXiv.2312.06591" target="_blank">Arxiv Link</a></p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Research Experience -->
@@ -305,7 +389,66 @@
         </div>
       </div>
     </section>
-    <!-- … rest of your content … -->
+
+    <!-- Industry Experience -->
+    <section id="industry-experience">
+      <h2>Industry Experience</h2>
+      <div class="masonry">
+        <div class="card">
+          <div class="card-content">
+            <strong>Data Scientist</strong><br>
+            HappyMonk.ai, Bengaluru (Apr 2023 – Dec 2023)<br>
+            Re‑ID, Object Detection, Activity Recognition
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="masonry">
+        <div class="card">
+          <div class="card-content">
+            <strong>Master of Technology in Computer Science</strong><br>
+            University of Hyderabad (2021–2023) | CGPA: 9.3
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <strong>Master of Science in Computer Science</strong><br>
+            Pondicherry Central University (2018–2020) | CGPA: 8.74
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <strong>Bachelor of Science in Computer Science</strong><br>
+            Ramakrishna Mission Residential College, Narendrapur, Calcutta University (2015–2018) | 82.13%
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Thesis Projects -->
+    <section id="thesis">
+      <h2>Thesis Projects</h2>
+      <div class="masonry">
+        <div class="card">
+          <div class="card-content">
+            <strong>Digital Reconstruction of Temple Tiles</strong><br>
+            ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)<br>
+            <a href="https://drive.google.com/file/d/1MAN2eXrhBumW84sWI7jWOMl7L6v8HW4V/view" target="_blank">View Thesis</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <strong>Handwritten Character Recognition</strong><br>
+            Pondicherry Central University (Dec 2019 – May 2020)<br>
+            <a href="https://docs.google.com/document/d/1zbNwPOIlzSrv8lTJmcKWS0HCDQ9JRz0c/edit" target="_blank">View Details</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- Abstract Modal -->
