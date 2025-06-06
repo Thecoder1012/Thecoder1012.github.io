@@ -403,55 +403,133 @@
       </div>
     </section>
 
-    <!-- Medium Writings Section (NEW) -->
     <section id="medium">
-      <h2>Medium Writings <span style="font-size:1.25rem;font-weight:400;">| <a href="https://medium.com/@arkaprabha17" target="_blank" style="color:#00ab6c;font-weight:600;text-decoration:underline;">@arkaprabha17</a></span></h2>
-      <div class="medium-masonry masonry">
-
-        <!-- Demystifying Diffusion Models -->
-        <div class="medium-card">
+      <h2>
+        Medium Writings
+        <span style="font-size:1.25rem;font-weight:400;">
+          | <a href="https://medium.com/@arkaprabha17" target="_blank" style="color:#00ab6c;font-weight:600;text-decoration:underline;">@arkaprabha17</a>
+        </span>
+      </h2>
+      <div class="medium-masonry masonry" style="margin-top:1.5rem;">
+        <style>
+          .medium-masonry .medium-tile {
+            background: #fff;
+            border-radius: 10px;
+            border: 1.5px solid #e7e7e7;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+            margin-bottom: 1.2rem;
+            transition: border-color 0.23s, box-shadow 0.23s, background 0.23s;
+            padding: 1.2rem 1.3rem 1.1rem 1.3rem;
+            position: relative;
+            cursor: pointer;
+            display: block;
+            text-decoration: none !important;
+          }
+          .medium-masonry .medium-tile:hover {
+            border-color: #00ab6c;
+            background: #f7fefb;
+            box-shadow: 0 4px 24px rgba(0,171,108,0.06), 0 1.5px 4px rgba(0,0,0,0.04);
+          }
+          .medium-masonry .medium-title {
+            font-size: 1.22rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: .32rem;
+            text-decoration: none;
+            transition: color 0.17s;
+          }
+          .medium-masonry .medium-tile:hover .medium-title {
+            color: #00ab6c;
+            text-decoration: underline;
+          }
+          .medium-masonry .medium-desc {
+            font-size: 1.02rem;
+            color: #444;
+            margin-bottom: .6rem;
+            line-height: 1.5;
+          }
+          .medium-masonry .medium-meta {
+            font-size: 0.97rem;
+            color: #888;
+            margin-top: .2rem;
+            display: flex;
+            align-items: center;
+          }
+          .medium-masonry .medium-meta .dot {
+            font-size: 1.15rem;
+            margin: 0 .35em;
+            line-height: 0.85;
+            color: #b0b0b0;
+          }
+          .medium-masonry .medium-badge {
+            display: inline-block;
+            background: #00ab6c;
+            color: #fff;
+            font-size: .79rem;
+            padding: 2px 9px;
+            border-radius: 8px;
+            margin-right: .7rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+          }
+          body.dark-mode .medium-masonry .medium-tile {
+            background: #23272e;
+            border: 1.5px solid #185941;
+          }
+          body.dark-mode .medium-masonry .medium-title { color: #fff; }
+          body.dark-mode .medium-masonry .medium-desc { color: #b9ffda; }
+          body.dark-mode .medium-masonry .medium-meta { color: #9fcfba; }
+          body.dark-mode .medium-masonry .medium-tile:hover {
+            background: #163a2e;
+            border-color: #00ab6c;
+          }
+        </style>
+    
+        <!-- Example Medium Tiles (replace/add as needed) -->
+        <a class="medium-tile" href="https://medium.com/@arkaprabha17/demystifying-diffusion-models-an-in-depth-evolution-cb059a77b419" target="_blank">
           <span class="medium-badge">Pinned</span>
-          <div class="medium-meta">
-            <a class="author-link" href="https://medium.com/@arkaprabha17" target="_blank">Arkaprabha Basu</a>
-            <span class="medium-date">10h ago</span>
+          <div class="medium-title">
+            Demystifying Diffusion Models: An in-depth Evolution
           </div>
-          <a class="medium-title" target="_blank">Demystifying Diffusion Models: An in-depth Evolution</a>
           <div class="medium-desc">
             Diffusion models have quietly taken over the generative modeling space—beating GANs in sample quality, training stability, and...
           </div>
-        </div>
-
-        <!-- Medium Partner Program Guide -->
-        <div class="medium-card">
           <div class="medium-meta">
-            <img src="https://thecoder1012.github.io/assets/47769368.jpeg" alt="Medium Profile">
-            <a class="author-link" href="https://medium.com/@arkaprabha17" target="_blank">Arkaprabha Basu</a>
+            Arkaprabha Basu
+            <span class="dot">&middot;</span>
+            10h ago
           </div>
-          <a class="medium-title" target="_blank">Step-by-Step: How to Enable the Medium Partner Program (with Screenshots)</a>
+        </a>
+    
+        <a class="medium-tile" href="https://medium.com/@arkaprabha17/step-by-step-how-to-enable-the-medium-partner-program-with-screenshots-76cdd1fdd3ca" target="_blank">
+          <div class="medium-title">
+            Step-by-Step: How to Enable the Medium Partner Program (with Screenshots)
+          </div>
           <div class="medium-desc">
             1. Start with Google: Search for the Partner Program...
           </div>
-          <img class="medium-thumbnail" src="https://miro.medium.com/v2/resize:fit:400/format:webp/1*07XJUJ97jW4PxtfE-BOySw.png" alt="Medium Partner Program Screenshot"/>
-        </div>
-
-        <!-- Hardware Comparison -->
-        <div class="medium-card">
           <div class="medium-meta">
-            <img src="https://miro.medium.com/v2/resize:fill:60:60/1*0f36SbGvNQCOIcrxOEwnAA.png" alt="Medium Profile">
-            <a class="author-link" href="https://medium.com/@arkaprabha17" target="_blank">Arkaprabha Basu</a>
-            <span class="medium-date">Aug 4, 2021</span>
+            Arkaprabha Basu
+            <span class="dot">&middot;</span>
+            9h ago
           </div>
-          <a class="medium-title" href="https://medium.com/@arkaprabha17/how-do-you-think-your-model-will-react-comparison-between-rtx-3070-m1-chip-google-colab-gpu-8e201a47113e" target="_blank">
+        </a>
+    
+        <a class="medium-tile" href="https://medium.com/@arkaprabha17/how-do-you-think-your-model-will-react-comparison-between-rtx-3070-m1-chip-google-colab-gpu-8e201a47113e" target="_blank">
+          <div class="medium-title">
             How do you think your model will React: Comparison between RTX 3070, M1 chip, Google Colab GPU
-          </a>
+          </div>
           <div class="medium-desc">
             Let us start with the concept of Deep Learning. It is an idea to mimic a human brain empowered with the neural network...
           </div>
-          <img class="medium-thumbnail" src="https://miro.medium.com/v2/resize:fit:400/format:webp/1*kGImYByX9ZIdV-wv7DoWFA.jpeg" alt="RTX GPU Thumbnail" />
-        </div>
-
-        <!-- Add more Medium articles here as you publish them -->
-
+          <div class="medium-meta">
+            Arkaprabha Basu
+            <span class="dot">&middot;</span>
+            Aug 4, 2021
+          </div>
+        </a>
+    
+        <!-- Add more stories by duplicating the above block -->
       </div>
     </section>
 
