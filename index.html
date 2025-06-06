@@ -18,30 +18,28 @@
       --border-cv: #3498db;
       --border-heritage: #f1c40f;
       --border-ml: #16a085;
+      --medium-green: #00ab6c;
+      --medium-bg: #fff;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--light);
+      background: var(--light);
       color: var(--text);
-      line-height: 1.6;
       transition: background-color .3s, color .3s;
+      line-height: 1.6;
     }
     body.dark-mode {
-      background-color: #222;
+      background: #23272e;
       color: #ddd;
     }
     /* Header */
     header {
       background: linear-gradient(135deg, var(--dark), var(--secondary));
       color: #fff;
-      padding: 3rem 1rem;
+      padding: 3rem 1rem 2rem 1rem;
       text-align: center;
+      position: relative;
     }
     header img {
       width: 140px;
@@ -49,13 +47,15 @@
       border-radius: 50%;
       border: 4px solid #fff;
       margin-bottom: 1rem;
+      object-fit: cover;
     }
     header h1 {
       font-size: 3rem;
       margin-bottom: .3rem;
+      letter-spacing: 1px;
     }
     .tagline {
-      color: #ddd;
+      color: #e0e0e0;
       font-size: 1.1rem;
       margin-bottom: .5rem;
     }
@@ -66,31 +66,23 @@
     /* Navbar */
     nav {
       background-color: var(--dark);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: .5rem 1rem;
     }
     nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
+      list-style: none; display: flex; flex-wrap: wrap;
     }
-    nav li {
-      margin: 0 .8rem;
-    }
+    nav li { margin: 0 .8rem; }
     nav a {
       color: #fff;
       font-weight: 600;
       text-decoration: none;
       transition: color .3s;
     }
-    nav a:hover {
-      color: var(--primary);
-    }
+    nav a:hover { color: var(--primary); }
     #theme-toggle {
       background: var(--primary);
       border: none;
@@ -99,8 +91,11 @@
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
+      transition: background .3s;
     }
-    /* Container & Sections */
+    #theme-toggle:hover {
+      background: var(--secondary);
+    }
     .container {
       max-width: 1200px;
       margin: 2rem auto;
@@ -115,145 +110,143 @@
       border-left: 6px solid var(--primary);
       padding-left: 1rem;
     }
-    /* Search & Filters */
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .filters input[type="search"] {
-      flex: 1;
-      padding: .5rem 1rem;
-      margin-right: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .filters label {
-      margin-right: 1rem;
-      display: flex;
-      align-items: center;
-      font-size: .9rem;
-    }
-    .filters input[type="checkbox"] {
-      margin-right: .3rem;
-    }
-    /* Masonry Layout */
+    /* Masonry Layout for cards */
     .masonry {
       column-width: 300px;
       column-gap: 1.5rem;
     }
-    .masonry .card {
+    .masonry .card, .medium-masonry .medium-card {
       display: inline-block;
       width: 100%;
       margin-bottom: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.09);
+      transition: box-shadow .2s, transform .2s, border-color .3s;
       background: #fff;
-      border: 3px solid var(--primary);
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      position: relative;
-      /* only animate border-color */
-      transition: border-color .3s;
     }
-    body.dark-mode .masonry .card {
-      background: #333;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    body.dark-mode .masonry .card, body.dark-mode .medium-masonry .medium-card {
+      background: #222a34;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.32);
     }
-    /* on hover, only border changes color */
-    .masonry .card:hover {
+    .masonry .card:hover, .medium-masonry .medium-card:hover {
+      box-shadow: 0 10px 30px rgba(20,170,130,0.19), 0 2px 4px rgba(0,0,0,0.09);
+      transform: translateY(-4px) scale(1.025);
       border-color: var(--primary);
     }
-    /* Theme border colors */
-    .theme-llm      { border-color: var(--border-llm); }
-    .theme-medical  { border-color: var(--border-medical); }
-    .theme-cv       { border-color: var(--border-cv); }
-    .theme-heritage { border-color: var(--border-heritage); }
-    .theme-ml       { border-color: var(--border-ml); }
-    /* Card content */
-    .card-content {
-      padding: 1.5rem;
-    }
-    .card h3 {
-      font-size: 1.3rem;
+    .card-content { padding: 1.5rem; }
+    .card h3, .medium-card h3 {
+      font-size: 1.2rem;
       margin-bottom: .6rem;
       color: var(--dark);
     }
-    body.dark-mode .card h3 {
+    body.dark-mode .card h3, body.dark-mode .medium-card h3 {
       color: #fff;
     }
-    .publication-details {
-      font-size: .95rem;
-      color: #555;
-      margin-bottom: .5rem;
-    }
-    body.dark-mode .publication-details {
-      color: #ccc;
-    }
-    .badge-new {
-      display: inline-block;
-      background-color: var(--secondary);
-      color: #fff;
-      font-size: .75rem;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: .5rem;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%,100% { opacity:1; }
-      50%     { opacity:0; }
-    }
-    /* disable overlays */
-    .overlay { display: none !important; }
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-content {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      max-width: 600px;
-      width: 90%;
+    /* Theme border colors */
+    .theme-llm      { border: 3px solid var(--border-llm); }
+    .theme-medical  { border: 3px solid var(--border-medical); }
+    .theme-cv       { border: 3px solid var(--border-cv); }
+    .theme-heritage { border: 3px solid var(--border-heritage); }
+    .theme-ml       { border: 3px solid var(--border-ml); }
+    .medium-card {
+      border: 2.5px solid var(--medium-green);
+      background: var(--medium-bg);
+      display: flex;
+      flex-direction: column;
+      transition: border-color .2s;
       position: relative;
+      min-height: 145px;
     }
-    body.dark-mode .modal-content {
-      background: #444;
-      color: #eee;
+    body.dark-mode .medium-card {
+      background: #27343b;
+      border: 2.5px solid #31ffae;
     }
-    .modal-content .close {
+    .medium-card .medium-badge {
       position: absolute;
-      top: .5rem;
-      right: .5rem;
-      font-size: 1.5rem;
-      cursor: pointer;
+      top: 12px; right: 12px;
+      background: var(--medium-green);
+      color: #fff;
+      font-size: .8rem;
+      padding: 2px 9px;
+      border-radius: 7px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
     }
-     /* Publication detail tweaks */
-    .publication-details {
-      font-size: .95rem;
-      color: #555;
+    .medium-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: .7rem;
+    }
+    .medium-meta img {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1.5px solid var(--medium-green);
+      margin-right: .7rem;
+      object-fit: cover;
+      background: #e6f8f0;
+    }
+    .medium-meta .author-link {
+      font-size: 1rem;
+      color: var(--medium-green);
+      font-weight: 600;
+      text-decoration: none;
+      margin-right: .7rem;
+    }
+    .medium-meta .author-link:hover {
+      text-decoration: underline;
+    }
+    .medium-title {
+      font-size: 1.17rem;
+      font-weight: 600;
+      color: var(--dark);
+      text-decoration: none;
+      margin-bottom: .4rem;
+      transition: color .22s;
+      display: block;
+    }
+    .medium-card:hover .medium-title {
+      color: var(--medium-green);
+      text-decoration: underline;
+    }
+    body.dark-mode .medium-title {
+      color: #fff;
+    }
+    .medium-date {
+      color: #5c5c5c;
+      font-size: 0.93rem;
       margin-bottom: .3rem;
     }
-    body.dark-mode .publication-details {
-      color: #ccc;
+    body.dark-mode .medium-date {
+      color: #d0ffd8;
     }
-    .abstract-snippet {
-      font-size: .9rem;
+    .medium-desc {
+      font-size: 0.98rem;
       color: #555;
-      margin-top: .5rem;
-      font-style: italic;
+      margin-bottom: .8rem;
     }
-    body.dark-mode .abstract-snippet {
-      color: #ccc;
+    body.dark-mode .medium-desc {
+      color: #d8ffe5;
+    }
+    .medium-thumbnail {
+      margin-left: auto;
+      max-width: 70px;
+      max-height: 70px;
+      border-radius: 8px;
+      margin-bottom: .6rem;
+      margin-top: .4rem;
+      object-fit: cover;
+      border: 2px solid var(--medium-green);
+      background: #f8fcfb;
+      display: block;
+    }
+    /* Responsive tweaks */
+    @media (max-width: 900px) {
+      .container { max-width: 98vw; }
+      .masonry, .medium-masonry { column-width: 98vw; }
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .medium-meta .author-link { font-size: 0.95rem; }
+      .medium-masonry .medium-card { min-height: 160px; }
     }
     /* Footer */
     footer {
@@ -261,15 +254,11 @@
       color: #ecf0f1;
       text-align: center;
       padding: 2rem 1rem;
-      font-size: .9rem;
+      font-size: .93rem;
+      margin-top: 2rem;
     }
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-    }
+    footer a { color: var(--primary); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -280,11 +269,11 @@
     <p class="tagline">Multimodal Medical AI | Computer Vision | Large Language Model Researcher</p>
     <p>Kolkata, India | <a href="mailto:arkaprabha17@gmail.com">arkaprabha17@gmail.com</a></p>
   </header>
-
   <!-- Navbar -->
   <nav>
     <ul>
       <li><a href="#publications">Publications</a></li>
+      <li><a href="#medium">Medium Writings</a></li>
       <li><a href="#research-experience">Research Experience</a></li>
       <li><a href="#industry-experience">Industry Experience</a></li>
       <li><a href="#education">Education</a></li>
@@ -294,169 +283,208 @@
   </nav>
 
   <div class="container">
+
     <!-- Publications Section -->
     <section id="publications" class="container">
-  <h2>Research Publications</h2>
-  <div class="masonry">
+      <h2>Research Publications</h2>
+      <div class="masonry">
 
-    <!-- HalluShift -->
-    <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482">
-      <div class="card-content">
-        <h3>
-          HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models
-          <span class="badge-new">ACCEPTED</span>
-        </h3>
-        <p class="publication-details"><strong>Authors:</strong> Sharanya Dasgupta, Sujoy Nath, Arkaprabha Basu, Pourya Shamsolmoali, Swagatam Das</p>
-        <p class="publication-details"><strong>Venue:</strong> IJCNN 2025</p>
-        <p class="publication-details"><strong>Ranking:</strong> B</p>
-        <p class="publication-details"><a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a></p>
-        <p class="abstract-snippet">
-          "LLMs often suffer from the inherent limitation of hallucinations and generate incorrect information while maintaining well‑structured and coherent responses."
-        </p>
+        <!-- HalluShift -->
+        <div class="card theme-llm theme-ml" data-doi="10.48550/arXiv.2504.09482">
+          <div class="card-content">
+            <h3>
+              HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models
+              <span class="badge-new">ACCEPTED</span>
+            </h3>
+            <p class="publication-details"><strong>Authors:</strong> Sharanya Dasgupta, Sujoy Nath, Arkaprabha Basu, Pourya Shamsolmoali, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> IJCNN 2025</p>
+            <p class="publication-details"><strong>Ranking:</strong> B</p>
+            <p class="publication-details"><a href="https://arxiv.org/abs/2504.09482" target="_blank">Arxiv Link</a></p>
+            <p class="abstract-snippet">
+              "LLMs often suffer from the inherent limitation of hallucinations and generate incorrect information while maintaining well‑structured and coherent responses."
+            </p>
+          </div>
+        </div>
+        <!-- Wasserstein Autoencoders -->
+        <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591">
+          <div class="card-content">
+            <h3>
+            Information Preservation with Wasserstein Autoencoders: Generation Consistency and Adversarial Robustness
+            </h3>
+            <p class="publication-details"><strong>Authors:</strong> Anish Chakrabarty, Arkaprabha Basu, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> Statistics & Computing</p>
+            <p class="publication-details"><strong>Ranking:</strong>Q1</p>
+            <p class="publication-details"><a href="https://doi.org/10.1007/s11222-025-10657-z" target="_blank">DOI Link</a></p>
+            <p class="abstract-snippet">
+              "We analyze the statistical properties of concurrent density estimation under the Wasserstein metric."
+            </p>
+          </div>
+        </div>
+        <!-- From Complexity to Clarity -->
+        <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281">
+          <div class="card-content">
+            <h3>
+              From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting
+            </h3>
+            <p class="publication-details"><strong>Authors:</strong> Sujoy Nath, Arkaprabha Basu, Kushal Bose, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> AAAI 2025 Student Abstract</p>
+            <p class="publication-details"><strong>Ranking:</strong> A*</p>
+            <p class="publication-details"><a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI Link</a></p>
+            <p class="abstract-snippet">
+              "We introduce a strategy called Chained Prompting for Improved Readability of Medical Reports (CPIR‑MR), which translates original medical findings into layperson‑friendly prose."
+            </p>
+          </div>
+        </div>
+        <!-- Improved Alzheimer’s Detection -->
+        <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29">
+          <div class="card-content">
+            <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Raha, Avisek Gupta, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> ICPR 2024</p>
+            <p class="publication-details"><strong>Ranking:</strong> B</p>
+            <p class="publication-details"><a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI Link</a></p>
+            <p class="abstract-snippet">
+              "…dynamic attention modules adaptively weight multimodal features to enhance classification accuracy on Alzheimer's datasets."
+            </p>
+          </div>
+        </div>
+        <!-- Digital Restoration -->
+        <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639">
+          <div class="card-content">
+            <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</p>
+            <p class="publication-details"><strong>Venue:</strong> IEEE Access 2023</p>
+            <p class="publication-details"><strong>Ranking:</strong> Q1 (Top 8%)</p>
+            <p class="publication-details"><a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI Link</a></p>
+            <p class="abstract-snippet">
+              "We comprehensively survey data‑driven methods for cultural heritage restoration, including GAN‑based and super‑resolution pipelines."
+            </p>
+          </div>
+        </div>
+        <!-- Pre-processing & Class Imbalance -->
+        <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971">
+          <div class="card-content">
+            <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Das, Sankha Mullick, Swagatam Das</p>
+            <p class="publication-details"><strong>Venue:</strong> IEEE TAI 2022</p>
+            <p class="publication-details"><strong>Ranking:</strong> Q1 (Top 20%)</p>
+            <p class="publication-details"><a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI Link</a></p>
+            <p class="abstract-snippet">
+              "We evaluate the impact of various preprocessing and imbalance‑handling strategies on COVID‑19 image classifier performance."
+            </p>
+          </div>
+        </div>
+        <!-- Fractal Dimension -->
+        <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31">
+          <div class="card-content">
+            <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
+            <p class="publication-details"><strong>Authors:</strong> Sreeya Ghosh, Arkaprabha Basu, Sandip Paul, Swagatam Das, Bhabatosh Chanda</p>
+            <p class="publication-details"><strong>Venue:</strong> ADCIS 2022</p>
+            <p class="publication-details"><strong>Ranking:</strong> Unranked</p>
+            <p class="publication-details"><a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI Link</a></p>
+            <p class="abstract-snippet">
+              "Our fractal dimension approach captures complex patterns in heritage artefact textures for improved classification."
+            </p>
+          </div>
+        </div>
+        <!-- Face Mask Recognition -->
+        <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061">
+          <div class="card-content">
+            <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
+            <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Md Firoj Ali</p>
+            <p class="publication-details"><strong>Venue:</strong> ICCCNT 2021</p>
+            <p class="publication-details"><strong>Ranking:</strong> Unranked</p>
+            <p class="publication-details"><a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI Link</a></p>
+            <p class="abstract-snippet">
+              "We propose an advanced face‑cut algorithm that improves mask detection accuracy in crowd surveillance scenarios."
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- Wasserstein Autoencoders -->
-    <div class="card theme-ml" data-doi="10.48550/arXiv.2312.06591">
-      <div class="card-content">
-        <h3>
-        Information Preservation with Wasserstein Autoencoders: Generation Consistency and Adversarial Robustness
-        </h3>
-        <p class="publication-details"><strong>Authors:</strong> Anish Chakrabarty, Arkaprabha Basu, Swagatam Das</p>
-        <p class="publication-details"><strong>Venue:</strong> Statistics & Computing</p>
-        <p class="publication-details"><strong>Ranking:</strong>Q1</p>
-        <p class="publication-details"><a href="https://doi.org/10.1007/s11222-025-10657-z" target="_blank">DOI Link</a></p>
-        <p class="abstract-snippet">
-          "We analyze the statistical properties of concurrent density estimation under the Wasserstein metric."
-        </p>
+    </section>
+
+    <!-- Medium Writings Section (NEW) -->
+    <section id="medium">
+      <h2>Medium Writings <span style="font-size:1.25rem;font-weight:400;">| <a href="https://medium.com/@arkaprabha17" target="_blank" style="color:#00ab6c;font-weight:600;text-decoration:underline;">@arkaprabha17</a></span></h2>
+      <div class="medium-masonry masonry">
+
+        <!-- Demystifying Diffusion Models -->
+        <div class="medium-card">
+          <span class="medium-badge">Pinned</span>
+          <div class="medium-meta">
+            <img src="https://miro.medium.com/v2/resize:fill:60:60/1*0f36SbGvNQCOIcrxOEwnAA.png" alt="Medium Profile">
+            <a class="author-link" href="https://medium.com/@arkaprabha17" target="_blank">Arkaprabha Basu</a>
+            <span class="medium-date">10h ago</span>
+          </div>
+          <a class="medium-title" href="https://medium.com/@arkaprabha17/demystifying-diffusion-models-an-in-depth-evolution-cb059a77b419" target="_blank">Demystifying Diffusion Models: An in-depth Evolution</a>
+          <div class="medium-desc">
+            Diffusion models have quietly taken over the generative modeling space—beating GANs in sample quality, training stability, and...
+          </div>
+          <img class="medium-thumbnail" src="./assets/diffusion_screenshot.png" alt="Diffusion Process Thumbnail" />
+        </div>
+
+        <!-- Medium Partner Program Guide -->
+        <div class="medium-card">
+          <div class="medium-meta">
+            <img src="https://miro.medium.com/v2/resize:fill:60:60/1*0f36SbGvNQCOIcrxOEwnAA.png" alt="Medium Profile">
+            <a class="author-link" href="https://medium.com/@arkaprabha17" target="_blank">Arkaprabha Basu</a>
+            <span class="medium-date">9h ago</span>
+          </div>
+          <a class="medium-title" href="https://medium.com/@arkaprabha17/step-by-step-how-to-enable-the-medium-partner-program-with-screenshots-76cdd1fdd3ca" target="_blank">Step-by-Step: How to Enable the Medium Partner Program (with Screenshots)</a>
+          <div class="medium-desc">
+            1. Start with Google: Search for the Partner Program...
+          </div>
+          <img class="medium-thumbnail" src="https://miro.medium.com/v2/resize:fit:400/format:webp/1*07XJUJ97jW4PxtfE-BOySw.png" alt="Medium Partner Program Screenshot"/>
+        </div>
+
+        <!-- Hardware Comparison -->
+        <div class="medium-card">
+          <div class="medium-meta">
+            <img src="https://miro.medium.com/v2/resize:fill:60:60/1*0f36SbGvNQCOIcrxOEwnAA.png" alt="Medium Profile">
+            <a class="author-link" href="https://medium.com/@arkaprabha17" target="_blank">Arkaprabha Basu</a>
+            <span class="medium-date">Aug 4, 2021</span>
+          </div>
+          <a class="medium-title" href="https://medium.com/@arkaprabha17/how-do-you-think-your-model-will-react-comparison-between-rtx-3070-m1-chip-google-colab-gpu-8e201a47113e" target="_blank">
+            How do you think your model will React: Comparison between RTX 3070, M1 chip, Google Colab GPU
+          </a>
+          <div class="medium-desc">
+            Let us start with the concept of Deep Learning. It is an idea to mimic a human brain empowered with the neural network...
+          </div>
+          <img class="medium-thumbnail" src="https://miro.medium.com/v2/resize:fit:400/format:webp/1*kGImYByX9ZIdV-wv7DoWFA.jpeg" alt="RTX GPU Thumbnail" />
+        </div>
+
+        <!-- Add more Medium articles here as you publish them -->
+
       </div>
-    </div>
-
-    <!-- From Complexity to Clarity -->
-    <div class="card theme-medical theme-llm" data-doi="10.1609/aaai.v39i28.35281">
-      <div class="card-content">
-        <h3>
-          From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting
-        </h3>
-        <p class="publication-details"><strong>Authors:</strong> Sujoy Nath, Arkaprabha Basu, Kushal Bose, Swagatam Das</p>
-        <p class="publication-details"><strong>Venue:</strong> AAAI 2025 Student Abstract</p>
-        <p class="publication-details"><strong>Ranking:</strong> A*</p>
-        <p class="publication-details"><a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank">DOI Link</a></p>
-        <p class="abstract-snippet">
-          "We introduce a strategy called Chained Prompting for Improved Readability of Medical Reports (CPIR‑MR), which translates original medical findings into layperson‑friendly prose."
-        </p>
-      </div>
-    </div>
-
-    <!-- Improved Alzheimer’s Detection -->
-    <div class="card theme-medical theme-cv" data-doi="10.1007/978-3-031-78195-7_29">
-      <div class="card-content">
-        <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi-modal Fusion</h3>
-        <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Raha, Avisek Gupta, Swagatam Das</p>
-        <p class="publication-details"><strong>Venue:</strong> ICPR 2024</p>
-        <p class="publication-details"><strong>Ranking:</strong> B</p>
-        <p class="publication-details"><a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank">DOI Link</a></p>
-        <p class="abstract-snippet">
-          "…dynamic attention modules adaptively weight multimodal features to enhance classification accuracy on Alzheimer's datasets."
-        </p>
-      </div>
-    </div>
-
-    <!-- Digital Restoration -->
-    <div class="card theme-heritage theme-ml" data-doi="10.1109/ACCESS.2023.3280639">
-      <div class="card-content">
-        <h3>Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</h3>
-        <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</p>
-        <p class="publication-details"><strong>Venue:</strong> IEEE Access 2023</p>
-        <p class="publication-details"><strong>Ranking:</strong> Q1 (Top 8%)</p>
-        <p class="publication-details"><a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank">DOI Link</a></p>
-        <p class="abstract-snippet">
-          "We comprehensively survey data‑driven methods for cultural heritage restoration, including GAN‑based and super‑resolution pipelines."
-        </p>
-      </div>
-    </div>
-
-    <!-- Pre-processing & Class Imbalance -->
-    <div class="card theme-medical theme-cv" data-doi="10.1109/TAI.2022.3149971">
-      <div class="card-content">
-        <h3>Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection?</h3>
-        <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Sourav Das, Sankha Mullick, Swagatam Das</p>
-        <p class="publication-details"><strong>Venue:</strong> IEEE TAI 2022</p>
-        <p class="publication-details"><strong>Ranking:</strong> Q1 (Top 20%)</p>
-        <p class="publication-details"><a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank">DOI Link</a></p>
-        <p class="abstract-snippet">
-          "We evaluate the impact of various preprocessing and imbalance‑handling strategies on COVID‑19 image classifier performance."
-        </p>
-      </div>
-    </div>
-
-    <!-- Fractal Dimension -->
-    <div class="card theme-heritage theme-ml" data-doi="10.1007/978-981-99-3250-4_31">
-      <div class="card-content">
-        <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
-        <p class="publication-details"><strong>Authors:</strong> Sreeya Ghosh, Arkaprabha Basu, Sandip Paul, Swagatam Das, Bhabatosh Chanda</p>
-        <p class="publication-details"><strong>Venue:</strong> ADCIS 2022</p>
-        <p class="publication-details"><strong>Ranking:</strong> Unranked</p>
-        <p class="publication-details"><a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank">DOI Link</a></p>
-        <p class="abstract-snippet">
-          "Our fractal dimension approach captures complex patterns in heritage artefact textures for improved classification."
-        </p>
-      </div>
-    </div>
-
-    <!-- Face Mask Recognition -->
-    <div class="card theme-cv" data-doi="10.1109/ICCCNT51525.2021.9580061">
-      <div class="card-content">
-        <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</h3>
-        <p class="publication-details"><strong>Authors:</strong> Arkaprabha Basu, Md Firoj Ali</p>
-        <p class="publication-details"><strong>Venue:</strong> ICCCNT 2021</p>
-        <p class="publication-details"><strong>Ranking:</strong> Unranked</p>
-        <p class="publication-details"><a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank">DOI Link</a></p>
-        <p class="abstract-snippet">
-          "We propose an advanced face‑cut algorithm that improves mask detection accuracy in crowd surveillance scenarios."
-        </p>
-      </div>
-    </div>
-
-    
-
-  </div>
-</section>
+    </section>
 
     <!-- Research Experience -->
     <section id="research-experience">
       <h2>Research Experience</h2>
       <div class="masonry">
-
-        <!-- Alzheimer Medical Report Generation -->
         <div class="card">
           <div class="card-content">
             <strong>Alzheimer Medical Report Generation</strong><br>
-            TCG Crest, Kolkata (Feb 2024 – Dec 2024)<br>
+            TCG Crest, Kolkata (Feb 2024 – Dec 2024)<br>
             Multimodal Explainable AI & Report Generation with LLaMa, Gemma‑2, Phi‑3
           </div>
         </div>
-
-        <!-- Digital Restoration of Heritage Artefacts -->
         <div class="card">
           <div class="card-content">
             <strong>Digital Restoration of Indian Heritage Artefacts</strong><br>
-            DST Project under Dr. Swagatam Das, ISI Kolkata (Jul 2022 – Mar 2023)<br>
+            DST Project under Dr. Swagatam Das, ISI Kolkata (Jul 2022 – Mar 2023)<br>
             Progressive GAN + YOLOv8 pipeline with MosaicSlice augmentation
           </div>
         </div>
-
-        <!-- New: Multi‑modal Diagnostics of Infectious Respiratory Diseases -->
         <div class="card">
           <div class="card-content">
             <strong>Advanced ML Tools for Multi‑modal Image‑assisted Diagnostics of Infectious Respiratory Diseases</strong><br>
-            DST Project under Dr. Swagatam Das, ISI Kolkata (Jan 2021 – Sep 2021)<br>
+            DST Project under Dr. Swagatam Das, ISI Kolkata (Jan 2021 – Sep 2021)<br>
             Pre‑processing & imbalance‑aware deep classifiers on chest X‑rays; dataset published on Harvard Dataverse
           </div>
         </div>
-
       </div>
     </section>
-
 
     <!-- Industry Experience -->
     <section id="industry-experience">
@@ -465,7 +493,7 @@
         <div class="card">
           <div class="card-content">
             <strong>Data Scientist</strong><br>
-            HappyMonk.ai, Bengaluru (Apr 2023 – Dec 2023)<br>
+            HappyMonk.ai, Bengaluru (Apr 2023 – Dec 2023)<br>
             Re‑ID, Object Detection, Activity Recognition
           </div>
         </div>
@@ -504,14 +532,14 @@
         <div class="card">
           <div class="card-content">
             <strong>Digital Reconstruction of Temple Tiles</strong><br>
-            ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)<br>
+            ISI Kolkata & University of Hyderabad (Jul 2022 – Mar 2023)<br>
             <a href="https://drive.google.com/file/d/1MAN2eXrhBumW84sWI7jWOMl7L6v8HW4V/view" target="_blank">View Thesis</a>
           </div>
         </div>
         <div class="card">
           <div class="card-content">
             <strong>Handwritten Character Recognition</strong><br>
-            Pondicherry Central University (Dec 2019 – May 2020)<br>
+            Pondicherry Central University (Dec 2019 – May 2020)<br>
             <a href="https://docs.google.com/document/d/1zbNwPOIlzSrv8lTJmcKWS0HCDQ9JRz0c/edit" target="_blank">View Details</a>
           </div>
         </div>
@@ -519,17 +547,9 @@
     </section>
   </div>
 
-  <!-- Abstract Modal -->
-  <div id="abstract-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h3 id="modal-title"></h3>
-      <p id="modal-text"></p>
-    </div>
-  </div>
-
   <footer>
     &copy; 2025 Arkaprabha Basu | <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>
+    | <a href="https://medium.com/@arkaprabha17" target="_blank">Medium Profile</a>
   </footer>
 
   <script>
@@ -537,50 +557,6 @@
     document.getElementById('theme-toggle').onclick = () => {
       document.body.classList.toggle('dark-mode');
     };
-
-    // Fetch citation counts & abstracts from a Google Scholar–scraping Apps Script
-    const scholarEndpoint = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?user=7S_jA3IAAAAJ';
-    fetch(scholarEndpoint)
-      .then(res => res.json())
-      .then(data => {
-        data.papers.forEach(p => {
-          const card = [...document.querySelectorAll('.card')]
-            .find(c => c.dataset.doi === p.doi || c.dataset.title === p.title);
-          if (card) {
-            card.querySelector('.citation-count').textContent = `${p.citationCount} citations`;
-            card.dataset.abstract = p.abstract;
-          }
-        });
-      })
-      .catch(_ => console.warn('Could not load Google Scholar data'));
-
-    // Modal logic
-    const modal = document.getElementById('abstract-modal');
-    document.querySelectorAll('.abstract-btn').forEach(btn => {
-      btn.onclick = e => {
-        const card = e.target.closest('.card');
-        document.getElementById('modal-title').textContent = card.dataset.title;
-        document.getElementById('modal-text').textContent  = card.dataset.abstract;
-        modal.style.display = 'flex';
-      };
-    });
-    modal.querySelector('.close').onclick = () => modal.style.display = 'none';
-    window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; };
-
-    // Search & theme filters
-    const searchInput = document.getElementById('search-input');
-    const themeCheckboxes = document.querySelectorAll('.theme-filter');
-    function filterCards() {
-      const q = searchInput.value.toLowerCase();
-      const active = [...themeCheckboxes].filter(c => c.checked).map(c => c.value);
-      document.querySelectorAll('.card').forEach(card => {
-        const txtMatch = card.textContent.toLowerCase().includes(q);
-        const themeMatch = active.length === 0 || active.some(th => card.classList.contains(th));
-        card.style.display = (txtMatch && themeMatch) ? '' : 'none';
-      });
-    }
-    searchInput.addEventListener('input', filterCards);
-    themeCheckboxes.forEach(cb => cb.addEventListener('change', filterCards));
   </script>
 </body>
 </html>
