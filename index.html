@@ -1,367 +1,815 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Arkaprabha Basu | Multimodal AI & LLM Research</title>
-  <meta name="description" content="Arkaprabha Basu — PhD Student at CVSSP, University of Surrey. Research in Computer Vision."/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Arkaprabha Basu</title>
+  <meta name="description" content="Arkaprabha Basu — PhD Student at CVSSP, University of Surrey. Research in Computer Vision, Multimodal AI & LLMs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.6.0/tabler-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <style>
-    :root{
-      --bg-main:#f4f6fb;--header-bg:linear-gradient(110deg,#161824 65%,#4470a9 100%);
-      --glass:rgba(255,255,255,.92);--glass-dark:rgba(28,38,54,.95);
-      --primary:#4470a9;--secondary:#fbb034;--highlight:#00b289;--danger:#e05f4a;--muted:#6b7da4;
-      --shadow:0 6px 38px 0 rgba(52,65,107,.1),0 1.5px 3px rgba(52,65,107,.06);
-      --radius:18px;--b-llm:#8e44ad;--b-med:#e74c3c;--b-cv:#3498db;--b-herit:#f1c40f;--b-ml:#16a085;
+    :root {
+      --primary: #3498db;
+      --primary-dark: #2980b9;
+      --text: #333;
+      --text-light: #6b6b6b;
+      --bg: #fff;
+      --bg-alt: #f9f9f9;
+      --border: #e0e0e0;
+      --sidebar-width: 260px;
+      --nav-height: 50px;
     }
-    html{scroll-behavior:smooth}
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-    body{font-family:'IBM Plex Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg-main);color:#26324c;margin:0;min-height:100vh;letter-spacing:.01em}
-    body.dark{background:#111827;color:#e6eeff}
-    /* header */
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:#fff;color:#111;padding:.5rem 1rem;border-radius:10px;z-index:999}
-    header{background:var(--header-bg);color:#fff;padding:3.2rem 1rem 2.6rem;text-align:center;position:relative;z-index:2;box-shadow:0 7px 36px #222a4065}
-    header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:40px;background:linear-gradient(to bottom,transparent,var(--bg-main) 85%);z-index:0}
-    .profile-img{width:140px;height:140px;border-radius:50%;object-fit:cover;border:6px solid #ffffff33;box-shadow:0 3px 16px #0a143070;margin-bottom:1rem;background:#d7e5fb;position:relative;z-index:1}
-    h1{font-family:'Playfair Display','IBM Plex Sans',serif;font-size:2.8rem;margin:.1rem 0 .3rem;font-weight:700;letter-spacing:.02em;line-height:1.1;text-shadow:0 2px 10px #0002}
-    .tagline{color:#ffe5b2;font-size:1.08rem;margin:.15rem 0 .7rem;font-weight:600;letter-spacing:.07em}
-    .header-meta{color:#f2f2f2;margin-bottom:1rem;font-size:1.02rem;letter-spacing:.03em}
-    .header-meta a{color:#fff;text-decoration:underline dotted;font-weight:600}
-    .header-links a{display:inline-block;color:var(--highlight);margin:.25rem 1rem;font-size:1.1rem;font-weight:600;transition:color .18s;text-decoration:none}
-    .header-links a:hover{color:var(--secondary)}
-    /* side nav */
-    nav{position:fixed;left:2vw;top:10vh;z-index:9;display:flex;flex-direction:column;align-items:flex-start}
-    nav ul{list-style:none;background:var(--glass);backdrop-filter:saturate(150%) blur(6px);border-radius:var(--radius);box-shadow:0 2px 14px #4d5a7a17;padding:.7rem .8rem;margin:0;font-size:1.05rem;display:flex;flex-direction:column;gap:.55rem}
-    nav a{color:#26324c;font-weight:600;text-decoration:none;transition:background .16s,color .16s;padding:.28rem .85rem;border-radius:8px;display:flex;align-items:center;gap:.45em}
-    nav a[aria-current="true"],nav a:hover{color:var(--primary);background:#e6f2fa}
-    body.dark nav ul{background:var(--glass-dark)}
-    body.dark nav a{color:#e6eeff}
-    body.dark nav a[aria-current="true"],body.dark nav a:hover{background:#16233b;color:var(--highlight)}
-    .btn{margin-top:1.1rem;background:var(--primary);border:none;color:#fff;padding:.55rem 1.05rem;border-radius:9px;cursor:pointer;font-weight:800;font-size:1rem;letter-spacing:.06em;box-shadow:0 2px 8px #5171a924}
-    .btn:hover{background:var(--highlight)}
-    .container{max-width:980px;margin:0 auto;margin-top:3.5rem;padding:0 2vw;position:relative;z-index:3}
-    section{margin-bottom:3.4rem}
-    section h2{font-family:'Playfair Display',serif;font-size:1.9rem;margin:0 0 1.1rem;letter-spacing:.01em;font-weight:700;color:var(--primary);border-left:7px solid var(--secondary);padding-left:.8rem}
-    .masonry{display:flex;flex-wrap:wrap;gap:1.2rem}
-    .card,.tile{background:var(--glass);backdrop-filter:saturate(180%) blur(4px);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.2rem 1.3rem;flex:1 1 340px;min-width:320px;border:1.2px solid #dde4f3;position:relative;transition:box-shadow .18s,border-color .18s,transform .17s}
-    .card:hover,.tile:hover{border-color:var(--primary);transform:translateY(-3px) scale(1.015);box-shadow:0 10px 30px #51a9e320,0 2px 6px #3b6e8d22}
-    body.dark .card,body.dark .tile{background:var(--glass-dark);border:1.2px solid #273449;color:#e0e7ff}
-    .card h3,.tile .title{font-family:'Playfair Display',serif;font-size:1.18rem;font-weight:700;margin:.2rem 0 .45rem;color:var(--primary)}
-    .meta{font-size:1rem;color:#304164;margin:.12rem 0}
-    .desc{font-size:1rem;color:#3a465b;margin:.25rem 0 .15rem;font-style:italic;line-height:1.5}
-    .badge{display:inline-block;background:var(--secondary);color:#fff;font-size:.79rem;padding:2px 10px;border-radius:6px;margin-left:.5rem;font-weight:800}
-    .theme-llm{border-left:5px solid var(--b-llm)}.theme-med{border-left:5px solid var(--b-med)}.theme-cv{border-left:5px solid var(--b-cv)}.theme-herit{border-left:5px solid var(--b-herit)}.theme-ml{border-left:5px solid var(--b-ml)}
-    .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:.5rem 0 1.1rem}
-    .chip{border:1px solid #cfe0f5;border-radius:999px;padding:.25rem .7rem;font-size:.9rem;cursor:pointer;user-select:none}
-    .chip.active{background:#e6f2fa;border-color:var(--primary);color:var(--primary);font-weight:700}
-    @media (max-width:1000px){nav{display:none}.container{padding:0 2vw}}
-    @media (max-width:700px){.container{padding:0 .5vw}.card,.tile{min-width:90vw;padding:1rem .8rem}.masonry{flex-direction:column;gap:1rem}section h2{font-size:1.35rem;padding-left:.4rem}}
-    footer{background:#18213b;color:#aab4e7;text-align:center;padding:2rem 1rem;font-size:1.02rem;margin-top:2.2rem;letter-spacing:.06em;border-top-left-radius:30px;border-top-right-radius:30px;box-shadow:0 -2px 24px #27354a22}
-    footer a{color:var(--secondary);text-decoration:underline}footer a:hover{color:var(--highlight)}
-    a.external::after{content:"↗";font-size:.9em;margin-left:.25em}
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 20px);
+    }
+
+    body {
+      font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Top Navigation */
+    .masthead {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .masthead__inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .masthead__title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .masthead__title:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .masthead__nav {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    .masthead__nav a {
+      padding: 0.5rem 0.85rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .masthead__nav a:hover,
+    .masthead__nav a.active {
+      background: var(--bg-alt);
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* Layout Container */
+    .page-wrapper {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: var(--nav-height);
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      padding: 2rem 1.5rem;
+      position: sticky;
+      top: var(--nav-height);
+      height: calc(100vh - var(--nav-height));
+      overflow-y: auto;
+    }
+
+    .author__avatar {
+      display: block;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 1rem;
+    }
+
+    .author__avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .author__content {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .author__name {
+      font-family: 'Noto Serif', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .author__bio {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .author__follow {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      margin-bottom: 1rem;
+    }
+    .author__follow:hover {
+      background: var(--primary-dark);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .author__urls {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .author__urls li {
+      margin-bottom: 0.5rem;
+    }
+
+    .author__urls a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text);
+      padding: 0.2rem 0;
+    }
+    .author__urls a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .author__urls i {
+      width: 20px;
+      text-align: center;
+      color: var(--text-light);
+    }
+
+    /* Main Content */
+    .page__content {
+      flex: 1;
+      padding: 2rem 2rem 4rem;
+      min-width: 0;
+      border-left: 1px solid var(--border);
+    }
+
+    .page__title {
+      font-family: 'Noto Serif', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section__title {
+      font-family: 'Noto Serif', Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .section__subtitle {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--text);
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* Publication Cards */
+    .pub-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .pub-item:last-child {
+      border-bottom: none;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .pub-authors {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+    }
+    .pub-authors u {
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .pub-venue {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-badge {
+      display: inline-block;
+      background: #27ae60;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .pub-badge.review {
+      background: #e67e22;
+    }
+    .pub-badge.workshop {
+      background: #9b59b6;
+    }
+
+    .pub-links {
+      font-size: 0.85rem;
+      margin-top: 0.35rem;
+    }
+    .pub-links a {
+      margin-right: 1rem;
+    }
+
+    /* Experience Cards */
+    .exp-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+
+    .exp-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .exp-meta {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin: 0.25rem 0;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-top: 0.5rem;
+    }
+
+    /* Medium Posts */
+    .medium-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .medium-item:last-child {
+      border-bottom: none;
+    }
+
+    .medium-title {
+      font-weight: 700;
+      color: var(--text);
+    }
+    .medium-title:hover {
+      color: var(--primary);
+    }
+
+    .medium-date {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      background: var(--bg-alt);
+    }
+
+    footer a {
+      color: var(--text-light);
+    }
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    .footer__follow {
+      margin-bottom: 0.75rem;
+    }
+    .footer__follow strong {
+      margin-right: 0.5rem;
+    }
+    .footer__follow a {
+      margin: 0 0.35rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 900px) {
+      .page-wrapper {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+        height: auto;
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem;
+      }
+
+      .author__avatar {
+        width: 120px;
+        height: 120px;
+      }
+
+      .page__content {
+        border-left: none;
+        padding: 1.5rem;
+      }
+
+      .masthead__nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .masthead__title {
+        font-size: 1rem;
+      }
+
+      .page__title {
+        font-size: 1.5rem;
+      }
+
+      .section__title {
+        font-size: 1.25rem;
+      }
+    }
+
+    /* Mobile Nav Toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    @media (max-width: 900px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .masthead__nav {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 0.5rem;
+        display: none;
+      }
+
+      .masthead__nav.open {
+        display: flex;
+      }
+
+      .masthead__nav a {
+        padding: 0.75rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
-  <header>
-    <img class="profile-img" src="./assets/47769368.jpeg" alt="Portrait of Arkaprabha Basu">
-    <h1>Arkaprabha Basu</h1>
-    <p class="tagline">PhD Student @ CVSSP, CoSTAR Fellow, University of Surrey</p>
-    <div class="header-meta">
-      Guildford, United Kingdom · <a href="mailto:arkaprabha17@gmail.com">arkaprabha17@gmail.com</a>
-    </div>
-    <div class="header-links" aria-label="Profile links">
-      <a class="external" href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank" rel="noopener"> <i class="ti ti-book-2"></i> Scholar</a>
-      <a class="external" href="https://github.com/Thecoder1012" target="_blank" rel="noopener"> <i class="ti ti-brand-github"></i> GitHub</a>
-      <a class="external" href="https://medium.com/@arkaprabha17" target="_blank" rel="noopener"> <i class="ti ti-brand-medium"></i> Medium</a>
+
+  <!-- Top Navigation -->
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a href="#about" class="masthead__title">Arkaprabha Basu</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.masthead__nav').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="masthead__nav">
+        <a href="#publications">Publications</a>
+        <a href="#medium">Blog</a>
+        <a href="#research">Research</a>
+        <a href="#industry">Industry</a>
+        <a href="#education">Education</a>
+        <a href="#cv">CV</a>
+      </nav>
     </div>
   </header>
 
-  <nav aria-label="Section navigation">
-    <ul>
-      <li><a href="#publications" id="link-publications"><i class="ti ti-books"></i> Publications</a></li>
-      <li><a href="#medium" id="link-medium"><i class="ti ti-article"></i> Medium</a></li>
-      <li><a href="#research" id="link-research"><i class="ti ti-brain"></i> Research</a></li>
-      <li><a href="#industry" id="link-industry"><i class="ti ti-building"></i> Industry</a></li>
-      <li><a href="#education" id="link-education"><i class="ti ti-school"></i> Education</a></li>
-      <li><a href="#thesis" id="link-thesis"><i class="ti ti-notebook"></i> Thesis</a></li>
-    </ul>
-    <button id="theme-toggle" class="btn" aria-label="Toggle dark mode"><i class="ti ti-moon"></i> Theme</button>
-  </nav>
-
-  <main id="main" class="container" tabindex="-1">
-    <!-- Publications -->
-    <section id="publications" aria-labelledby="pub-title">
-      <h2 id="pub-title">Research Publications</h2>
-
-      <!-- quick filters -->
-      <div class="filters" role="group" aria-label="Filter publications by theme">
-        <span class="chip active" data-chip="all">All</span>
-        <span class="chip" data-chip="llm">LLM/MLLM</span>
-        <span class="chip" data-chip="medical">Medical</span>
-        <span class="chip" data-chip="cv">Vision</span>
-        <span class="chip" data-chip="ml">Core ML</span>
-        <span class="chip" data-chip="heritage">Heritage</span>
+  <div class="page-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="author__avatar">
+        <img src="./assets/47769368.jpeg" alt="Arkaprabha Basu">
       </div>
-
-      <div class="masonry" id="pub-list">
-        <!-- IJCNN 2025 HalluShift -->
-        <article class="card theme-llm theme-ml" data-tags="llm ml" data-year="2025">
-          <h3>HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models</h3>
-          <div class="meta"><b>Authors:</b> Sharanya Dasgupta, Sujoy Nath, <u>Arkaprabha Basu</u>, Pourya Shamsolmoali, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> IJCNN 2025 · Ranking: B</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1109/IJCNN64981.2025.11228484" target="_blank" rel="noopener">Proceedings link</a></div>
-          <p class="desc">Benchmarks internal distribution shifts to flag hallucination-prone generations.</p>
-        </article>
-
-        <!-- ICVGIP 2025 HalluShift++ -->
-        <article class="card theme-llm theme-cv" data-tags="llm cv" data-year="2025">
-          <h3>Hallushift++: Bridging Language and Vision through Internal Representation Shifts for Hierarchical Hallucinations in MLLMs <span class="badge">Accepted</span></h3>
-          <div class="meta"><b>Authors:</b> Sujoy Nath, <u>Arkaprabha Basu</u>, Sharanya Dasgupta, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> ICVGIP 2025</div>
-        </article>
-
-        <!-- IJCNN DLIA Workshop 2025 -->
-        <article class="card theme-llm theme-med" data-tags="llm medical" data-year="2025">
-          <h3>Medical Report Generation with Fine‑Tuned Large Language Models <span class="badge">Workshop</span></h3>
-          <div class="meta"><b>Authors:</b> <u>Arkaprabha Basu</u>, Avisek Gupta, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> IJCNN 2025 · DLIA Workshop · Ranking: B</div>
-          <div class="meta"><a class="external" href="https://www.sciencedirect.com/science/article/pii/S1877050925021805" target="_blank" rel="noopener">Proceedings link</a></div>
-          <p class="desc">Explores instruction‑tuning strategies for reliable radiology‑style generation.</p>
-        </article>
-
-        <!-- AAAI 2025 student abstract -->
-        <article class="card theme-med theme-llm" data-tags="medical llm" data-year="2025">
-          <h3>From Complexity to Clarity: Transforming Chest X‑ray Reports with Chained Prompting</h3>
-          <div class="meta"><b>Authors:</b> Sujoy Nath, <u>Arkaprabha Basu</u>, Kushal Bose, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> AAAI 2025 (Student Abstract) · Ranking: A*</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank" rel="noopener">DOI</a></div>
-          <p class="desc">A chained prompting recipe (CPIR‑MR) to translate radiology reports into layperson‑friendly prose.</p>
-        </article>
-
-        <!-- Stats & Computing 2025 WAE -->
-        <article class="card theme-ml" data-tags="ml" data-year="2025">
-          <h3>Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</h3>
-          <div class="meta"><b>Authors:</b> Anish Chakrabarty, <u>Arkaprabha Basu</u>, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> Statistics & Computing · Ranking: Q1</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1007/s11222-025-10657-z" target="_blank" rel="noopener">DOI</a></div>
-          <p class="desc">Characterizes information preservation and generation consistency under the Wasserstein metric.</p>
-        </article>
-
-        <!-- EAAI under review (SR GAN) -->
-        <article class="card theme-cv theme-ml" data-tags="cv ml" data-year="2024">
-          <h3>Near‑Perfect Image Super‑Resolution: Exploring Multiple Divergence Measures in Fully Convolutional GAN <span class="badge">Under review</span></h3>
-          <div class="meta"><b>Authors:</b> <u>Arkaprabha Basu</u>, Kushal Bose, Sankha Subhra Mullick, Anish Chakrabarty, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> Elsevier EAAI (Q1)</div>
-          <div class="meta"><a class="external" href="https://arxiv.org/abs/2404.06294" target="_blank" rel="noopener">ArXiv</a></div>
-        </article>
-
-        <!-- Robust Cross Domain Alignment (preprint) -->
-        <article class="card theme-ml" data-tags="ml" data-year="2024">
-          <h3>On Robust Cross Domain Alignment <span class="badge">Under review</span></h3>
-          <div class="meta"><b>Authors:</b> Anish Chakrabarty, <u>Arkaprabha Basu</u>, Swagatam Das</div>
-          <div class="meta"><a class="external" href="https://arxiv.org/abs/2412.15861" target="_blank" rel="noopener">ArXiv</a></div>
-        </article>
-
-        <!-- ICPR 2024 -->
-        <article class="card theme-med theme-cv" data-tags="medical cv" data-year="2024">
-          <h3>Improved Alzheimer’s Disease Detection with Dynamic Attention Guided Multi‑modal Fusion</h3>
-          <div class="meta"><b>Authors:</b> <u>Arkaprabha Basu</u>, Sourav Raha, Avisek Gupta, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> ICPR 2024 · Ranking: B</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank" rel="noopener">DOI</a></div>
-        </article>
-
-        <!-- IEEE Access 2023 survey -->
-        <article class="card theme-herit theme-ml" data-tags="heritage ml" data-year="2023">
-          <h3>Digital Restoration of Cultural Heritage With Data‑Driven Computing: A Survey</h3>
-          <div class="meta"><b>Authors:</b> <u>Arkaprabha Basu</u>, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</div>
-          <div class="meta"><b>Venue:</b> IEEE Access · Ranking: Q1 (Top 8%)</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank" rel="noopener">DOI</a></div>
-        </article>
-
-        <!-- IEEE TAI 2022 -->
-        <article class="card theme-med theme-cv" data-tags="medical cv" data-year="2022">
-          <h3>Do Pre‑processing and Class Imbalance Matter to the Deep Image Classifiers for COVID‑19 Detection? An Explainable Analysis</h3>
-          <div class="meta"><b>Authors:</b> <u>Arkaprabha Basu</u>, Sourav Das, Sankha Mullick, Swagatam Das</div>
-          <div class="meta"><b>Venue:</b> IEEE TAI 2022 · Ranking: Q1 (Top 20%)</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank" rel="noopener">DOI</a></div>
-        </article>
-
-        <!-- ADCIS 2022 -->
-        <article class="card theme-herit theme-ml" data-tags="heritage ml" data-year="2022">
-          <h3>On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</h3>
-          <div class="meta"><b>Authors:</b> Sreeya Ghosh, <u>Arkaprabha Basu</u>, Sandip Paul, Swagatam Das, Bhabatosh Chanda</div>
-          <div class="meta"><b>Venue:</b> ADCIS 2022</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank" rel="noopener">DOI</a></div>
-        </article>
-
-        <!-- ICCCNT 2021 -->
-        <article class="card theme-cv" data-tags="cv" data-year="2021">
-          <h3>Face Mask Recognition using Advanced Face Cut Algorithm for COVID‑19 Safety Measures</h3>
-          <div class="meta"><b>Authors:</b> <u>Arkaprabha Basu</u>, Md Firoj Ali</div>
-          <div class="meta"><b>Venue:</b> ICCCNT 2021</div>
-          <div class="meta"><a class="external" href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank" rel="noopener">DOI</a></div>
-        </article>
+      <div class="author__content">
+        <h2 class="author__name">Arkaprabha Basu</h2>
+        <p class="author__bio">PhD Student, CVSSP<br>University of Surrey</p>
+        <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" class="author__follow" target="_blank" rel="noopener">Follow</a>
       </div>
-    </section>
+      <ul class="author__urls">
+        <li>
+          <a href="#"><i class="fas fa-map-marker-alt"></i> Guildford, UK</a>
+        </li>
+        <li>
+          <a href="mailto:arkaprabha17@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </li>
+        <li>
+          <a href="https://www.researchgate.net/profile/Arkaprabha-Basu" target="_blank" rel="noopener"><i class="fab fa-researchgate"></i> ResearchGate</a>
+        </li>
+        <li>
+          <a href="https://github.com/Thecoder1012" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+        </li>
+        <li>
+          <a href="https://medium.com/@arkaprabha17" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Medium</a>
+        </li>
+        <li>
+          <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Google Scholar</a>
+        </li>
+        <li>
+          <a href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener"><i class="ai ai-orcid"></i> ORCID</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/arkaprabha-basu/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </li>
+      </ul>
+    </aside>
 
-    <!-- Medium -->
-    <section id="medium" aria-labelledby="medium-title">
-      <h2 id="medium-title">Medium Writings <span style="font-size:1.05rem;font-weight:400">| <a class="external" href="https://medium.com/@arkaprabha17" target="_blank" rel="noopener" style="color:var(--highlight);font-weight:700;text-decoration:underline">@arkaprabha17</a></span></h2>
-      <div class="masonry">
-        <a class="tile" href="https://medium.com/@arkaprabha17/demystifying-diffusion-models-an-in-depth-evolution-955610a02d92" target="_blank" rel="noopener">
-          <span class="badge">Pinned</span>
-          <div class="title">Demystifying Diffusion Models: An In‑Depth Evolution — with a Companion Podcast</div>
-          <p class="desc">Diffusion models have taken over generative modeling — simpler training, strong sample quality…</p>
-          <div class="meta">June 6, 2025</div>
-        </a>
-        <a class="tile" href="https://medium.com/@arkaprabha17/step-by-step-how-to-enable-the-medium-partner-program-with-screenshots-03df13dca30c" target="_blank" rel="noopener">
-          <div class="title">Step‑by‑Step: Enable the Medium Partner Program (with screenshots)</div>
-          <p class="desc">A short walkthrough to activate monetization on Medium…</p>
-          <div class="meta">June 6, 2025</div>
-        </a>
-        <a class="tile" href="https://medium.com/@arkaprabha17/how-do-you-think-your-model-will-react-comparison-between-rtx-3070-m1-chip-google-colab-gpu-36012b651081" target="_blank" rel="noopener">
-          <div class="title">How will your model react? RTX 3070 vs. M1 vs. Colab GPU</div>
-          <p class="desc">A quick primer on DL hardware differences and when they matter…</p>
-          <div class="meta">Aug 4, 2021</div>
-        </a>
-      </div>
-    </section>
+    <!-- Main Content -->
+    <main class="page__content">
+      <!-- About Section -->
+      <section id="about" class="section">
+        <h1 class="page__title">About</h1>
+        <p>
+          Hello! I am a PhD student at the <a href="https://www.surrey.ac.uk/centre-vision-speech-signal-processing" target="_blank" rel="noopener">Centre for Vision, Speech and Signal Processing (CVSSP)</a>, 
+          <a href="https://www.surrey.ac.uk/" target="_blank" rel="noopener">University of Surrey</a>, and a <a href="https://costar.ac.uk/" target="_blank" rel="noopener">CoSTAR Fellow</a>. 
+          My research focuses on Vision-Language Models (VLMs), diffusion models, MLLM hallucination detection, and multimodal medical analysis.
+        </p>
+        <p>
+          Previously, I worked as a Project Associate at <a href="https://tcgcrest.org/" target="_blank" rel="noopener">TCG CREST</a>, Kolkata, where I developed multimodal explainable AI systems and medical report generation using large language models including Llama, Gemma-2, and Phi-3.
+        </p>
+        <p>
+          I obtained my Master of Technology in Computer Science from the <a href="https://uohyd.ac.in/" target="_blank" rel="noopener">University of Hyderabad</a> in 2023, where I worked on digital reconstruction of heritage temple tiles using few-shot GANs and super-resolution techniques at the <a href="https://www.isical.ac.in/" target="_blank" rel="noopener">Indian Statistical Institute, Kolkata</a>.
+        </p>
 
-    <!-- Research Experience -->
-    <section id="research" aria-labelledby="research-title">
-      <h2 id="research-title">Research Experience</h2>
-      <div class="masonry">
-        <article class="card">
-          <h3>PhD Student — CVSSP, University of Surrey</h3>
-          <div class="meta">Guildford, UK · Oct 2025 — Present</div>
-          <div class="meta">Focus: Vision‑Language Models (VLM), Diffusion, MLLM Hallucination & Alignment; Multimodal medical analysis.</div>
-        </article>
-        <article class="card">
-          <h3>Project Associate — TCG CREST</h3>
-          <div class="meta">Kolkata · Feb 2024 — Dec 2024</div>
-          <div class="meta">Multimodal explainable AI & report generation with Llama, Gemma‑2, Phi‑3; clinical readability and faithfulness objectives.</div>
-        </article>
-        <article class="card">
-          <h3>Project Linked Person — Indian Statistical Institute</h3>
-          <div class="meta">Kolkata · Jul 2022 — Mar 2023</div>
-          <div class="meta">Temple Tile Reconstruction (Bankura Terracotta): 3D‑aware few‑shot GAN + super‑resolution; automated defect detect/replace; Streamlit tool.</div>
-        </article>
-        <article class="card">
-          <h3>Project Linked Person — Indian Statistical Institute</h3>
-          <div class="meta">Kolkata · Jan 2021 — Oct 2021</div>
-          <div class="meta">COVID‑19 from Chest X‑rays: Image enhancement + class‑imbalance aware ResNet50; XAI to highlight abnormal rib‑cage regions.</div>
-        </article>
-      </div>
-    </section>
+        <h3 class="section__subtitle">Research Interests</h3>
+        <p>
+          My work spans computer vision, natural language processing, and their intersection in multimodal learning. Current focus areas include:
+        </p>
+        <p>
+          <strong>Vision-Language Models:</strong> Studying hallucination phenomena in MLLMs and developing methods for better alignment between visual and textual representations.
+        </p>
+        <p>
+          <strong>Medical AI:</strong> Building explainable systems for clinical report generation, radiology image analysis, and transforming complex medical reports into patient-friendly language.
+        </p>
+        <p>
+          <strong>Generative Models:</strong> Exploring diffusion models and GANs for image super-resolution, heritage reconstruction, and creative applications.
+        </p>
+      </section>
 
-    <!-- Industry Experience -->
-    <section id="industry" aria-labelledby="industry-title">
-      <h2 id="industry-title">Industry Experience</h2>
-      <div class="masonry">
-        <article class="card">
-          <h3>Data Scientist — HappyMonk.ai</h3>
-          <div class="meta">Bengaluru · Apr 2023 — Dec 2023</div>
-          <div class="meta">Edge anomaly detection for multi‑camera surveillance using YOLOv8/YOLOv5, SlowFast & Re‑ID; optimized TAO/ETLT → ONNX → TensorRT; deployed on NVIDIA DeepStream.</div>
-        </article>
-      </div>
-    </section>
+      <!-- Publications Section -->
+      <section id="publications" class="section">
+        <h2 class="section__title">Publications</h2>
 
-    <!-- Education -->
-    <section id="education" aria-labelledby="edu-title">
-      <h2 id="edu-title">Education</h2>
-      <div class="masonry">
-        <article class="card">
-          <h3>PhD in Computer Vision / AI (in progress)</h3>
-          <div class="meta">CVSSP — University of Surrey · 2025 — Present</div>
-        </article>
-        <article class="card">
-          <h3>Master of Technology in Computer Science</h3>
-          <div class="meta">University of Hyderabad · 2021 — 2023 · CGPA: 9.3</div>
-        </article>
-        <article class="card">
-          <h3>Master of Science in Computer Science</h3>
-          <div class="meta">Pondicherry Central University · 2018 — 2020 · CGPA: 8.74</div>
-        </article>
-        <article class="card">
-          <h3>Bachelor of Science in Computer Science</h3>
-          <div class="meta">Ramakrishna Mission Residential College, Narendrapur, Calcutta University · 2015 — 2018 · 82.13%</div>
-        </article>
-      </div>
-    </section>
+        <div class="pub-item">
+          <div class="pub-title">HalluShift: Measuring Distribution Shifts towards Hallucination Detection in Large Language Models</div>
+          <div class="pub-authors">Sharanya Dasgupta, Sujoy Nath, <u>Arkaprabha Basu</u>, Pourya Shamsolmoali, Swagatam Das</div>
+          <div class="pub-venue">IJCNN 2025 (CORE Rank: B)</div>
+          <div class="pub-links"><a href="https://doi.org/10.1109/IJCNN64981.2025.11228484" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Paper</a></div>
+        </div>
 
-    <!-- Thesis -->
-    <section id="thesis" aria-labelledby="thesis-title">
-      <h2 id="thesis-title">Thesis Projects</h2>
-      <div class="masonry">
-        <article class="card">
-          <h3>Digital Reconstruction of Temple Tiles</h3>
-          <div class="meta">ISI Kolkata & University of Hyderabad · Jul 2022 — Mar 2023</div>
-          <a class="external" href="https://drive.google.com/file/d/1MAN2eXrhBumW84sWI7jWOMl7L6v8HW4V/view" target="_blank" rel="noopener">View Thesis</a>
-        </article>
-        <article class="card">
-          <h3>Handwritten Character Recognition</h3>
-          <div class="meta">Pondicherry Central University · Dec 2019 — May 2020</div>
-          <a class="external" href="https://docs.google.com/document/d/1zbNwPOIlzSrv8lTJmcKWS0HCDQ9JRz0c/edit" target="_blank" rel="noopener">View Details</a>
-        </article>
-      </div>
-    </section>
-  </main>
+        <div class="pub-item">
+          <div class="pub-title">Hallushift++: Bridging Language and Vision through Internal Representation Shifts for Hierarchical Hallucinations in MLLMs <span class="pub-badge">Accepted</span></div>
+          <div class="pub-authors">Sujoy Nath, <u>Arkaprabha Basu</u>, Sharanya Dasgupta, Swagatam Das</div>
+          <div class="pub-venue">ICVGIP 2025</div>
+        </div>
 
+        <div class="pub-item">
+          <div class="pub-title">Medical Report Generation with Fine-Tuned Large Language Models <span class="pub-badge workshop">Workshop</span></div>
+          <div class="pub-authors"><u>Arkaprabha Basu</u>, Avisek Gupta, Swagatam Das</div>
+          <div class="pub-venue">IJCNN 2025 · DLIA Workshop (CORE Rank: B)</div>
+          <div class="pub-links"><a href="https://www.sciencedirect.com/science/article/pii/S1877050925021805" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Paper</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">From Complexity to Clarity: Transforming Chest X-ray Reports with Chained Prompting</div>
+          <div class="pub-authors">Sujoy Nath, <u>Arkaprabha Basu</u>, Kushal Bose, Swagatam Das</div>
+          <div class="pub-venue">AAAI 2025 Student Abstract (CORE Rank: A*)</div>
+          <div class="pub-links"><a href="https://doi.org/10.1609/aaai.v39i28.35281" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Concurrent Density Estimation with Wasserstein Autoencoders: Some Statistical Insights</div>
+          <div class="pub-authors">Anish Chakrabarty, <u>Arkaprabha Basu</u>, Swagatam Das</div>
+          <div class="pub-venue">Statistics & Computing (Q1)</div>
+          <div class="pub-links"><a href="https://doi.org/10.1007/s11222-025-10657-z" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Near-Perfect Image Super-Resolution: Exploring Multiple Divergence Measures in Fully Convolutional GAN <span class="pub-badge review">Under Review</span></div>
+          <div class="pub-authors"><u>Arkaprabha Basu</u>, Kushal Bose, Sankha Subhra Mullick, Anish Chakrabarty, Swagatam Das</div>
+          <div class="pub-venue">Elsevier EAAI (Q1)</div>
+          <div class="pub-links"><a href="https://arxiv.org/abs/2404.06294" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i> ArXiv</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">On Robust Cross Domain Alignment <span class="pub-badge review">Under Review</span></div>
+          <div class="pub-authors">Anish Chakrabarty, <u>Arkaprabha Basu</u>, Swagatam Das</div>
+          <div class="pub-links"><a href="https://arxiv.org/abs/2412.15861" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i> ArXiv</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Improved Alzheimer's Disease Detection with Dynamic Attention Guided Multi-modal Fusion</div>
+          <div class="pub-authors"><u>Arkaprabha Basu</u>, Sourav Raha, Avisek Gupta, Swagatam Das</div>
+          <div class="pub-venue">ICPR 2024 (CORE Rank: B)</div>
+          <div class="pub-links"><a href="https://doi.org/10.1007/978-3-031-78195-7_29" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Digital Restoration of Cultural Heritage With Data-Driven Computing: A Survey</div>
+          <div class="pub-authors"><u>Arkaprabha Basu</u>, Sandip Paul, Sreeya Ghosh, Swagatam Das, Bhabatosh Chanda, Chakravarthy Bhagvati, Václav Snasel</div>
+          <div class="pub-venue">IEEE Access (Q1, Top 8%)</div>
+          <div class="pub-links"><a href="https://doi.org/10.1109/ACCESS.2023.3280639" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Do Pre-processing and Class Imbalance Matter to the Deep Image Classifiers for COVID-19 Detection? An Explainable Analysis</div>
+          <div class="pub-authors"><u>Arkaprabha Basu</u>, Sourav Das, Sankha Mullick, Swagatam Das</div>
+          <div class="pub-venue">IEEE TAI 2022 (Q1, Top 20%)</div>
+          <div class="pub-links"><a href="https://doi.org/10.1109/TAI.2022.3149971" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">On Regenerative and Discriminative Learning from Digital Heritages: A Fractal Dimension based Approach</div>
+          <div class="pub-authors">Sreeya Ghosh, <u>Arkaprabha Basu</u>, Sandip Paul, Swagatam Das, Bhabatosh Chanda</div>
+          <div class="pub-venue">ADCIS 2022</div>
+          <div class="pub-links"><a href="https://doi.org/10.1007/978-981-99-3250-4_31" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-title">Face Mask Recognition using Advanced Face Cut Algorithm for COVID-19 Safety Measures</div>
+          <div class="pub-authors"><u>Arkaprabha Basu</u>, Md Firoj Ali</div>
+          <div class="pub-venue">ICCCNT 2021</div>
+          <div class="pub-links"><a href="https://doi.org/10.1109/ICCCNT51525.2021.9580061" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> DOI</a></div>
+        </div>
+      </section>
+
+      <!-- Medium Section -->
+      <section id="medium" class="section">
+        <h2 class="section__title">Blog Posts</h2>
+        <p>I write about AI, deep learning, and research on <a href="https://medium.com/@arkaprabha17" target="_blank" rel="noopener">Medium</a>.</p>
+
+        <div class="medium-item">
+          <a href="https://medium.com/@arkaprabha17/demystifying-diffusion-models-an-in-depth-evolution-955610a02d92" target="_blank" rel="noopener" class="medium-title">
+            Demystifying Diffusion Models: An In-Depth Evolution — with a Companion Podcast
+          </a>
+          <div class="medium-date">June 6, 2025</div>
+        </div>
+
+        <div class="medium-item">
+          <a href="https://medium.com/@arkaprabha17/step-by-step-how-to-enable-the-medium-partner-program-with-screenshots-03df13dca30c" target="_blank" rel="noopener" class="medium-title">
+            Step-by-Step: Enable the Medium Partner Program (with screenshots)
+          </a>
+          <div class="medium-date">June 6, 2025</div>
+        </div>
+
+        <div class="medium-item">
+          <a href="https://medium.com/@arkaprabha17/how-do-you-think-your-model-will-react-comparison-between-rtx-3070-m1-chip-google-colab-gpu-36012b651081" target="_blank" rel="noopener" class="medium-title">
+            How will your model react? RTX 3070 vs. M1 vs. Colab GPU
+          </a>
+          <div class="medium-date">August 4, 2021</div>
+        </div>
+      </section>
+
+      <!-- Research Experience Section -->
+      <section id="research" class="section">
+        <h2 class="section__title">Research Experience</h2>
+
+        <div class="exp-item">
+          <div class="exp-title">PhD Student — CVSSP, University of Surrey</div>
+          <div class="exp-meta">Guildford, UK · October 2025 — Present</div>
+          <div class="exp-desc">Research focus: Vision-Language Models (VLM), diffusion models, MLLM hallucination & alignment, multimodal medical analysis. CoSTAR Fellow.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-title">Project Associate — TCG CREST</div>
+          <div class="exp-meta">Kolkata, India · February 2024 — December 2024</div>
+          <div class="exp-desc">Developed multimodal explainable AI systems and medical report generation using Llama, Gemma-2, and Phi-3. Focused on clinical readability and faithfulness objectives.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-title">Project Linked Person — Indian Statistical Institute</div>
+          <div class="exp-meta">Kolkata, India · July 2022 — March 2023</div>
+          <div class="exp-desc">Temple tile reconstruction (Bankura Terracotta): Developed 3D-aware few-shot GAN with super-resolution, automated defect detection/replacement pipeline, and Streamlit visualization tool.</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-title">Project Linked Person — Indian Statistical Institute</div>
+          <div class="exp-meta">Kolkata, India · January 2021 — October 2021</div>
+          <div class="exp-desc">COVID-19 detection from chest X-rays: Image enhancement + class-imbalance aware ResNet50; XAI methods to highlight abnormal rib-cage regions.</div>
+        </div>
+      </section>
+
+      <!-- Industry Section -->
+      <section id="industry" class="section">
+        <h2 class="section__title">Industry Experience</h2>
+
+        <div class="exp-item">
+          <div class="exp-title">Data Scientist — HappyMonk.ai</div>
+          <div class="exp-meta">Bengaluru, India · April 2023 — December 2023</div>
+          <div class="exp-desc">Edge anomaly detection for multi-camera surveillance using YOLOv8/YOLOv5, SlowFast & Re-ID. Optimized TAO/ETLT → ONNX → TensorRT pipelines. Deployed on NVIDIA DeepStream.</div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section id="education" class="section">
+        <h2 class="section__title">Education</h2>
+
+        <div class="exp-item">
+          <div class="exp-title">PhD in Computer Vision / AI</div>
+          <div class="exp-meta">CVSSP — University of Surrey · 2025 — Present</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-title">Master of Technology in Computer Science</div>
+          <div class="exp-meta">University of Hyderabad · 2021 — 2023 · CGPA: 9.3/10</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-title">Master of Science in Computer Science</div>
+          <div class="exp-meta">Pondicherry Central University · 2018 — 2020 · CGPA: 8.74/10</div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-title">Bachelor of Science in Computer Science</div>
+          <div class="exp-meta">Ramakrishna Mission Residential College (Autonomous), Narendrapur · 2015 — 2018 · 82.13%</div>
+        </div>
+      </section>
+
+      <!-- CV Section -->
+      <section id="cv" class="section">
+        <h2 class="section__title">Curriculum Vitae</h2>
+        <p>
+          Download my full CV: <a href="./assets/CV_Arkaprabha_Basu.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>
+        </p>
+
+        <h3 class="section__subtitle">Thesis Projects</h3>
+        <div class="exp-item">
+          <div class="exp-title">Digital Reconstruction of Temple Tiles</div>
+          <div class="exp-meta">ISI Kolkata & University of Hyderabad · July 2022 — March 2023</div>
+          <div class="pub-links"><a href="https://drive.google.com/file/d/1MAN2eXrhBumW84sWI7jWOMl7L6v8HW4V/view" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Thesis</a></div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-title">Handwritten Character Recognition</div>
+          <div class="exp-meta">Pondicherry Central University · December 2019 — May 2020</div>
+          <div class="pub-links"><a href="https://docs.google.com/document/d/1zbNwPOIlzSrv8lTJmcKWS0HCDQ9JRz0c/edit" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View Details</a></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
   <footer>
-    © 2025 Arkaprabha Basu — <a class="external" href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> ·
-    <a class="external" href="https://medium.com/@arkaprabha17" target="_blank" rel="noopener">Medium</a> ·
-    <a class="external" href="https://github.com/Thecoder1012" target="_blank" rel="noopener">GitHub</a>
+    <div class="footer__follow">
+      <strong>Follow:</strong>
+      <a href="https://github.com/Thecoder1012" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://scholar.google.com/citations?user=7S_jA3IAAAAJ&hl=en" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Scholar</a>
+      <a href="https://medium.com/@arkaprabha17" target="_blank" rel="noopener"><i class="fab fa-medium"></i> Medium</a>
+    </div>
+    <div>
+      © 2025 Arkaprabha Basu. Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>.
+    </div>
   </footer>
 
   <script>
-    // ===== Theme: respect system, persist choice
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme');
-    if ((savedTheme === 'dark') || (!savedTheme && prefersDark)) document.body.classList.add('dark');
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-    });
-
-    // ===== Section highlight with IntersectionObserver (accessible aria-current)
-    const links = {
-      publications: document.getElementById('link-publications'),
-      medium: document.getElementById('link-medium'),
-      research: document.getElementById('link-research'),
-      industry: document.getElementById('link-industry'),
-      education: document.getElementById('link-education'),
-      thesis: document.getElementById('link-thesis')
-    };
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        const id = entry.target.id;
-        if(entry.isIntersecting){
-          Object.values(links).forEach(a=>a.setAttribute('aria-current','false'));
-          (links[id]||{}).setAttribute && links[id].setAttribute('aria-current','true');
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+          // Close mobile nav if open
+          document.querySelector('.masthead__nav').classList.remove('open');
         }
       });
-    },{root:null,rootMargin:'-40% 0px -55% 0px',threshold:[0,1]});
-    document.querySelectorAll('main section').forEach(sec=>observer.observe(sec));
+    });
 
-    // ===== Publication filters (chips)
-    const chips = document.querySelectorAll('.chip');
-    const pubCards = [...document.querySelectorAll('#pub-list .card')];
-    chips.forEach(chip=>chip.addEventListener('click',()=>{
-      chips.forEach(c=>c.classList.remove('active'));
-      chip.classList.add('active');
-      const tag = chip.dataset.chip;
-      pubCards.forEach(card=>{
-        if(tag==='all'){ card.style.display=''; return; }
-        const tags = (card.getAttribute('data-tags')||'').split(/\s+/);
-        card.style.display = tags.includes(tag) ? '' : 'none';
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.masthead__nav a');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
       });
-    }));
+    }, observerOptions);
 
-    // ===== Minor: external link security (already rel=noopener), keyboard focus styles are native
+    sections.forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
