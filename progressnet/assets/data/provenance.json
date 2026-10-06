@@ -1,0 +1,1165 @@
+{
+  "paper": "ProgressNet: Sketching and Prompting with a Frozen Text-to-Image Model",
+  "arxiv": "2610.03512v1",
+  "sources": [
+    {
+      "id": "cat",
+      "source": "paper",
+      "page": 25,
+      "figure": 13,
+      "embedded_xref": 1373,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "farm",
+      "source": "paper",
+      "page": 26,
+      "figure": 14,
+      "embedded_xref": 1383,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "forest-train",
+      "source": "paper",
+      "page": 27,
+      "figure": 15,
+      "embedded_xref": 1384,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "giraffe",
+      "source": "paper",
+      "page": 28,
+      "figure": 16,
+      "embedded_xref": 1385,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "electric-train",
+      "source": "paper",
+      "page": 29,
+      "figure": 17,
+      "embedded_xref": 1386,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "bird",
+      "source": "paper",
+      "page": 30,
+      "figure": 18,
+      "embedded_xref": 1387,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "overhead-train",
+      "source": "paper",
+      "page": 31,
+      "figure": 19,
+      "embedded_xref": 1388,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "dog",
+      "source": "paper",
+      "page": 32,
+      "figure": 20,
+      "embedded_xref": 1389,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "jets",
+      "source": "paper",
+      "page": 33,
+      "figure": 21,
+      "embedded_xref": 1390,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "sheep",
+      "source": "paper",
+      "page": 34,
+      "figure": 22,
+      "embedded_xref": 1391,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "tennis",
+      "source": "paper",
+      "page": 35,
+      "figure": 23,
+      "embedded_xref": 1392,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "mountain-birds",
+      "source": "paper",
+      "page": 36,
+      "figure": 24,
+      "embedded_xref": 1393,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "industry",
+      "source": "paper",
+      "page": 37,
+      "figure": 25,
+      "embedded_xref": 1394,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "planes",
+      "source": "paper",
+      "page": 38,
+      "figure": 26,
+      "embedded_xref": 1395,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "modern-train",
+      "source": "paper",
+      "page": 39,
+      "figure": 27,
+      "embedded_xref": 1396,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "signal",
+      "source": "paper",
+      "page": 40,
+      "figure": 28,
+      "embedded_xref": 1397,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "crosswalk",
+      "source": "paper",
+      "page": 41,
+      "figure": 29,
+      "embedded_xref": 1398,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "palm",
+      "source": "paper",
+      "page": 42,
+      "figure": 30,
+      "embedded_xref": 1399,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "clock",
+      "source": "paper",
+      "page": 43,
+      "figure": 31,
+      "embedded_xref": 1400,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "truck",
+      "source": "paper",
+      "page": 44,
+      "figure": 32,
+      "embedded_xref": 1401,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "locomotive",
+      "source": "paper",
+      "page": 45,
+      "figure": 33,
+      "embedded_xref": 1239,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "kite",
+      "source": "paper",
+      "page": 46,
+      "figure": 34,
+      "embedded_xref": 1240,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "railway",
+      "source": "paper",
+      "page": 47,
+      "figure": 35,
+      "embedded_xref": 1241,
+      "native_grid": [
+        1624,
+        1856
+      ],
+      "cell_origin": [
+        64,
+        36
+      ],
+      "cell_pitch": [
+        260,
+        260
+      ],
+      "panel_size": [
+        252,
+        252
+      ],
+      "method_order": [
+        "sketch",
+        "sdxs",
+        "flux",
+        "stableflow",
+        "ours",
+        "reference"
+      ],
+      "completion_levels": [
+        10,
+        20,
+        30,
+        50,
+        70,
+        80,
+        100
+      ],
+      "processing": "Individual native figure panels; layout borders removed; lossless WebP; no enhancement or interpolated stages."
+    },
+    {
+      "id": "cat-0",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        25,
+        726,
+        872,
+        1568
+      ],
+      "sketch_rect": [
+        25,
+        314,
+        431,
+        698
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "cat-1",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        968,
+        726,
+        1813,
+        1568
+      ],
+      "sketch_rect": [
+        968,
+        314,
+        1375,
+        698
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "cat-2",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        1906,
+        726,
+        2744,
+        1568
+      ],
+      "sketch_rect": [
+        1906,
+        314,
+        2312,
+        698
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "cat-3",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        2846,
+        726,
+        3691,
+        1568
+      ],
+      "sketch_rect": [
+        2846,
+        314,
+        3253,
+        698
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "cat-4",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        3793,
+        726,
+        4634,
+        1568
+      ],
+      "sketch_rect": [
+        3793,
+        314,
+        4200,
+        698
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "landscape-0",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        25,
+        2229,
+        872,
+        3070
+      ],
+      "sketch_rect": [
+        25,
+        1813,
+        431,
+        2191
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "landscape-1",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        968,
+        2229,
+        1813,
+        3070
+      ],
+      "sketch_rect": [
+        968,
+        1813,
+        1375,
+        2191
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "landscape-2",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        1906,
+        2229,
+        2744,
+        3070
+      ],
+      "sketch_rect": [
+        1906,
+        1813,
+        2312,
+        2191
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "landscape-3",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        2846,
+        2229,
+        3691,
+        3070
+      ],
+      "sketch_rect": [
+        2846,
+        1813,
+        3253,
+        2191
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "id": "landscape-4",
+      "source": "paper",
+      "page": 1,
+      "figure": 1,
+      "image_rect": [
+        3793,
+        2229,
+        4634,
+        3070
+      ],
+      "sketch_rect": [
+        3793,
+        1813,
+        4200,
+        2191
+      ],
+      "processing": "Published image and operation annotation panels, presented separately. No newly generated model outputs."
+    },
+    {
+      "source": "video",
+      "file": "progressivegeneration.mp4",
+      "duration_seconds": 71.833333,
+      "native_resolution": [
+        1920,
+        1080
+      ],
+      "hero_source_seconds": [
+        59,
+        71.5
+      ],
+      "sketch_crop": [
+        620,
+        356,
+        540,
+        540
+      ],
+      "output_crop": [
+        1242,
+        318,
+        614,
+        614
+      ],
+      "processing": "Spatial UI crop and web encoding; hero is a continuous excerpt at original playback speed. No generative enhancement or temporal interpolation."
+    }
+  ]
+}
