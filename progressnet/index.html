@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ProgressNet follows progressive drawing, erasure and prompt revision with a frozen text-to-image model. Watch the demo and methodology video, and explore the original qualitative comparisons.">
+  <meta name="author" content="Arkaprabha Basu, Chaitat Utintu, Yi-Zhe Song">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ProgressNet: Sketching and Prompting with a Frozen Text-to-Image Model">
+  <meta property="og:description" content="Progressive sketching, erasure and prompt revision. Demo, methodology video, and 23 full supplementary comparison sequences.">
+  <meta property="og:url" content="https://thecoder1012.github.io/progressnet/">
+  <meta property="og:image" content="https://thecoder1012.github.io/progressnet/assets/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thecoder1012.github.io/progressnet/">
+  <title>ProgressNet: Sketching and Prompting with a Frozen Text-to-Image Model</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./assets/style.css">
+  <script src="./assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#demo">Skip to the demo</a>
+  <main>
+    <header class="title-section">
+      <div class="container">
+        <h1><span>ProgressNet: Sketching and Prompting</span><span>with a Frozen Text-to-Image Model</span></h1>
+        <p class="authors">
+          <span class="author"><a href="https://thecoder1012.github.io/">Arkaprabha Basu</a><sup>1,2</sup></span><span class="author-separator">, </span>
+          <span class="author"><a href="mailto:chaitat.u@surrey.ac.uk">Chaitat Utintu</a><sup>1</sup></span><span class="author-separator">, </span>
+          <span class="author"><a href="mailto:y.song@surrey.ac.uk">Yi-Zhe Song</a><sup>1</sup></span>
+        </p>
+        <p class="affiliations"><span><sup>1</sup>SketchX, CVSSP, University of Surrey</span><span><sup>2</sup>CoSTAR National Lab</span></p>
+        <div class="publication-links" aria-label="Publication links">
+          <a class="link-button" href="./paper.pdf" target="_blank" rel="noopener">Paper</a>
+          <a class="link-button" href="https://arxiv.org/abs/2610.03512" target="_blank" rel="noopener">arXiv</a>
+          <a class="link-button" href="#methodology">Video</a>
+        </div>
+        <nav class="section-nav" aria-label="Page sections"><a href="#demo">Demo</a><a href="#abstract">Abstract</a><a href="#methodology">Methodology</a><a href="#results">Results</a><a href="#comparisons">Comparisons</a><a href="#bibtex">BibTeX</a></nav>
+      </div>
+    </header>
+    <section class="demo-section" id="demo" aria-label="ProgressNet demo">
+      <div class="container">
+        <figure>
+          <div class="video-labels" aria-hidden="true"><span>Input sketch</span><span>ProgressNet</span></div>
+          <div class="video-wrap">
+            <video id="demo-video" controls playsinline loop preload="none" poster="./assets/demo-poster.jpg" width="1304" height="640" aria-label="Recorded drawing demonstration. The input sketch and ProgressNet output are shown side by side.">
+              <source src="./assets/demo.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="./assets/demo.mp4">Open the demo.</a>
+            </video>
+          </div>
+          <figcaption class="video-caption">Draw, erase, and revise the prompt while the generated image follows the session.</figcaption>
+          <p class="video-links"><a href="./assets/demo.mp4" target="_blank" rel="noopener">Open demo video</a><span>Recorded session · 1:11</span></p>
+        </figure>
+      </div>
+    </section>
+    <section class="abstract-section" id="abstract" aria-labelledby="abstract-title">
+      <div class="container narrow">
+        <h2 id="abstract-title">Abstract</h2>
+        <!-- Full abstract from the supplied arXiv v1, page 1; paragraph breaks are for reading only. -->
+        <div class="abstract-text">
+          <p>Humans draw progressively: a few strokes, a look at the result, a stroke erased, a prompt revised. Image generators do not work this way. They typically take a finished sketch and produce the image in a single pass, so every edit starts the picture again, and the models that do keep state across turns are driven by text, cannot take a stroke, and are too slow to draw with. We present <strong>ProgressNet</strong>, a training-free framework that lets a frozen text-to-image model follow a drawing session as it unfolds: strokes are added and erased, the prompt is revised, and the image keeps up at about a second per turn.</p>
+          <p>It needs no new parameters because the frozen model already has what a progressive generator needs, a pathway through which the previous turn can be remembered, layers that can carry appearance forward without freezing structure, and an internal signal of how far to trust an unfinished sketch; three inference-time mechanisms (Previous-Concept Memory, Layer-Selective K/V Injection and Banded Adaptive Control) use each in turn. As a sketch fills in, every existing method degrades, the FID of the FLUX+ControlNet baseline doubling between 10% and 100% completion on FS-COCO, while ProgressNet’s barely moves; it maintains strong fidelity and progressive coherence across three sketch domains and is preferred by users over five competitors, most widely on erasure.</p>
+        </div>
+      </div>
+    </section>
+    <section class="method-section" id="methodology" aria-labelledby="method-title">
+      <div class="container">
+        <h2 id="method-title">Methodology</h2>
+        <p class="method-intro">Start with the drawing experience, then follow how ProgressNet remembers the previous image, reuses attention features, and adapts memory control.</p>
+        <figure>
+          <div class="video-wrap">
+            <video id="method-video" controls playsinline preload="none" poster="./assets/methodology-poster.jpg" width="1920" height="1080" aria-label="ProgressNet methodology film, two minutes thirty-seven and a half seconds, with background music and SketchX sound effects. The opening drawing demonstration is followed by PCM, LS-KVI and BAC explanations.">
+              <source src="./assets/ProgressNet_Experience_and_Methodology_150s_Web.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="./assets/ProgressNet_Experience_and_Methodology_150s_Web.mp4">Open the methodology video.</a>
+            </video>
+          </div>
+          <figcaption class="video-caption">A SketchX opening, a 22-second drawing demonstration, and the complete methodology explanation. Music and effects play only when you start the video.</figcaption>
+          <p class="video-links"><span>2:37.5 · 1080p</span><a href="./assets/ProgressNet_Experience_and_Methodology_150s_Web.mp4" target="_blank" rel="noopener">Open video</a><a href="./assets/ProgressNet_Experience_and_Methodology_150s_1080p.mp4" download>Download 60 fps version</a><a href="./paper.pdf#page=4" target="_blank" rel="noopener">Read the method</a></p>
+        </figure>
+      </div>
+    </section>
+    <section class="results-section" id="results" aria-labelledby="results-title">
+      <div class="container">
+        <h2 id="results-title">Qualitative Results</h2>
+        <p class="section-intro">Drawing, erasure, and prompt revision through complete interaction sequences. Click any figure to inspect the original images at a larger size.</p>
+        <figure class="qualitative-figure">
+          <h3>Stroke addition and erasure</h3>
+          <a class="figure-link" href="./assets/figures/interaction-source.jpg" target="_blank" rel="noopener" data-figure data-title="Drawing, erasure and prompt revision: the full cat sequence" data-description="Original Figure 1 from index_figure.pdf. Both complete sequences, all prompt boxes and all operation annotations are retained." data-alt="Five complete cat interaction states with the original sketches, prompt boxes, green added strokes, red dashed erased strokes and generated images." aria-label="Enlarge Drawing, erasure and prompt revision: the full cat sequence"><img class="figure-image" src="./assets/figures/cat-interaction.jpg" width="2600" height="897" loading="lazy" decoding="async" alt="Five complete cat interaction states with the original sketches, prompt boxes, green added strokes, red dashed erased strokes and generated images."></a>
+          <figcaption class="figure-caption">The complete cat interaction from <a class="source-link" href="./paper.pdf#page=1" target="_blank" rel="noopener">Figure 1</a>. The cat moves onto a platform, stands as legs are drawn, loses its tail when it is erased, and enters a river after further drawing and a prompt update.</figcaption>
+          <div class="operation-notes"><p><strong>Drawing and erasure.</strong> Green strokes mark additions; red dashed strokes mark removals.</p><p><strong>Prompt changes.</strong> Blue words identify the revised instruction. Every sketch, prompt, and output is retained.</p></div>
+        </figure>
+        <figure class="qualitative-figure">
+          <h3>Prompt updates and scene building</h3>
+          <a class="figure-link" href="./assets/figures/interaction-source.jpg" target="_blank" rel="noopener" data-figure data-title="The complete landscape and prompt-update sequence" data-description="Original Figure 1. Blue words identify prompt changes; green strokes identify additions. No prompt or output panel has been removed." data-alt="Five complete landscape states: initial mountains, a boat, snowy scenery, green scenery, then a house and birds. Each includes its original sketch, prompt and output." aria-label="Enlarge The complete landscape and prompt-update sequence"><img class="figure-image" src="./assets/figures/landscape-interaction.jpg" width="2600" height="825" loading="lazy" decoding="async" alt="Five complete landscape states: initial mountains, a boat, snowy scenery, green scenery, then a house and birds. Each includes its original sketch, prompt and output."></a>
+          <figcaption class="figure-caption">A mountain landscape gains a boat, changes from snowy to green, and is finished with a house and birds. The complete five-turn sequence and original prompt annotations are retained. <a class="source-link" href="./paper.pdf#page=1" target="_blank" rel="noopener">Figure 1</a>.</figcaption>
+        </figure>
+        <div class="subsection divided">
+          <h3>Progressive sketching comparisons</h3>
+          <p class="section-intro">Selected sequences at 10%, 50%, and 100% completion. The full seven-stage comparisons are available beneath each example and in the gallery below.</p>
+          <figure class="comparison-figure" id="comparison-giraffe">
+      <h4 class="comparison-title" style="text-align:center">Giraffe and tree</h4>
+      <p class="prompt">Prompt: “a giraffe is standing near a tree.”</p>
+      <a class="figure-link" href="./assets/comparisons/figure-16.jpg" target="_blank" rel="noopener" data-figure data-title="Giraffe and tree — all seven stages" data-description="Giraffe and tree — Supplementary Figure 16. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." data-alt="Giraffe and tree at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph." aria-label="Enlarge Giraffe and tree — all seven stages"><img class="figure-image" src="./assets/comparisons/giraffe-selected.jpg" width="1692" height="879" loading="lazy" decoding="async" alt="Giraffe and tree at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph."></a>
+      <figcaption class="figure-caption">10%, 50%, and 100% completion. The reference photograph is the dataset image, not a generated output.</figcaption>
+      <p class="figure-meta"><a href="./assets/comparisons/figure-16.jpg" data-figure data-title="Giraffe and tree — complete progression" data-description="Giraffe and tree — Supplementary Figure 16. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." target="_blank" rel="noopener">View all seven stages</a><a class="source-link" href="./paper.pdf#page=28" target="_blank" rel="noopener">Figure 16</a></p>
+    </figure>
+<figure class="comparison-figure" id="comparison-forest-train">
+      <h4 class="comparison-title" style="text-align:center">Train in woodland</h4>
+      <p class="prompt">Prompt: “a train moving through the woods.”</p>
+      <a class="figure-link" href="./assets/comparisons/figure-15.jpg" target="_blank" rel="noopener" data-figure data-title="Train in woodland — all seven stages" data-description="Train in woodland — Supplementary Figure 15. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." data-alt="Train in woodland at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph." aria-label="Enlarge Train in woodland — all seven stages"><img class="figure-image" src="./assets/comparisons/forest-train-selected.jpg" width="1692" height="879" loading="lazy" decoding="async" alt="Train in woodland at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph."></a>
+      <figcaption class="figure-caption">10%, 50%, and 100% completion. The reference photograph is the dataset image, not a generated output.</figcaption>
+      <p class="figure-meta"><a href="./assets/comparisons/figure-15.jpg" data-figure data-title="Train in woodland — complete progression" data-description="Train in woodland — Supplementary Figure 15. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." target="_blank" rel="noopener">View all seven stages</a><a class="source-link" href="./paper.pdf#page=27" target="_blank" rel="noopener">Figure 15</a></p>
+    </figure>
+<figure class="comparison-figure" id="comparison-dog">
+      <h4 class="comparison-title" style="text-align:center">Dog and frisbee</h4>
+      <p class="prompt">Prompt: “A dog sitting and eagerly waiting to catch the frisbee.”</p>
+      <a class="figure-link" href="./assets/comparisons/figure-20.jpg" target="_blank" rel="noopener" data-figure data-title="Dog and frisbee — all seven stages" data-description="Dog and frisbee — Supplementary Figure 20. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." data-alt="Dog and frisbee at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph." aria-label="Enlarge Dog and frisbee — all seven stages"><img class="figure-image" src="./assets/comparisons/dog-selected.jpg" width="1692" height="879" loading="lazy" decoding="async" alt="Dog and frisbee at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph."></a>
+      <figcaption class="figure-caption">10%, 50%, and 100% completion. The reference photograph is the dataset image, not a generated output.</figcaption>
+      <p class="figure-meta"><a href="./assets/comparisons/figure-20.jpg" data-figure data-title="Dog and frisbee — complete progression" data-description="Dog and frisbee — Supplementary Figure 20. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." target="_blank" rel="noopener">View all seven stages</a><a class="source-link" href="./paper.pdf#page=32" target="_blank" rel="noopener">Figure 20</a></p>
+    </figure>
+<figure class="comparison-figure" id="comparison-sheep">
+      <h4 class="comparison-title" style="text-align:center">Sheep in a field</h4>
+      <p class="prompt">Prompt: “sheep standing in a field.”</p>
+      <a class="figure-link" href="./assets/comparisons/figure-22.jpg" target="_blank" rel="noopener" data-figure data-title="Sheep in a field — all seven stages" data-description="Sheep in a field — Supplementary Figure 22. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." data-alt="Sheep in a field at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph." aria-label="Enlarge Sheep in a field — all seven stages"><img class="figure-image" src="./assets/comparisons/sheep-selected.jpg" width="1692" height="879" loading="lazy" decoding="async" alt="Sheep in a field at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph."></a>
+      <figcaption class="figure-caption">10%, 50%, and 100% completion. The reference photograph is the dataset image, not a generated output.</figcaption>
+      <p class="figure-meta"><a href="./assets/comparisons/figure-22.jpg" data-figure data-title="Sheep in a field — complete progression" data-description="Sheep in a field — Supplementary Figure 22. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." target="_blank" rel="noopener">View all seven stages</a><a class="source-link" href="./paper.pdf#page=34" target="_blank" rel="noopener">Figure 22</a></p>
+    </figure>
+<figure class="comparison-figure" id="comparison-mountain-birds">
+      <h4 class="comparison-title" style="text-align:center">Birds over mountains</h4>
+      <p class="prompt">Prompt: “Few birds are flying over the mountains.”</p>
+      <a class="figure-link" href="./assets/comparisons/figure-24.jpg" target="_blank" rel="noopener" data-figure data-title="Birds over mountains — all seven stages" data-description="Birds over mountains — Supplementary Figure 24. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." data-alt="Birds over mountains at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph." aria-label="Enlarge Birds over mountains — all seven stages"><img class="figure-image" src="./assets/comparisons/mountain-birds-selected.jpg" width="1692" height="879" loading="lazy" decoding="async" alt="Birds over mountains at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph."></a>
+      <figcaption class="figure-caption">10%, 50%, and 100% completion. The reference photograph is the dataset image, not a generated output.</figcaption>
+      <p class="figure-meta"><a href="./assets/comparisons/figure-24.jpg" data-figure data-title="Birds over mountains — complete progression" data-description="Birds over mountains — Supplementary Figure 24. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." target="_blank" rel="noopener">View all seven stages</a><a class="source-link" href="./paper.pdf#page=36" target="_blank" rel="noopener">Figure 24</a></p>
+    </figure>
+<figure class="comparison-figure" id="comparison-crosswalk">
+      <h4 class="comparison-title" style="text-align:center">Street crossing</h4>
+      <p class="prompt">Prompt: “People are crossing the busy streets.”</p>
+      <a class="figure-link" href="./assets/comparisons/figure-29.jpg" target="_blank" rel="noopener" data-figure data-title="Street crossing — all seven stages" data-description="Street crossing — Supplementary Figure 29. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." data-alt="Street crossing at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph." aria-label="Enlarge Street crossing — all seven stages"><img class="figure-image" src="./assets/comparisons/crosswalk-selected.jpg" width="1692" height="879" loading="lazy" decoding="async" alt="Street crossing at 10%, 50% and 100% sketch completion. Six columns show the input sketch, SDXS, FLUX plus ControlNet, StableFlow, ProgressNet and the reference photograph."></a>
+      <figcaption class="figure-caption">10%, 50%, and 100% completion. The reference photograph is the dataset image, not a generated output.</figcaption>
+      <p class="figure-meta"><a href="./assets/comparisons/figure-29.jpg" data-figure data-title="Street crossing — complete progression" data-description="Street crossing — Supplementary Figure 29. Seven stages: 10, 20, 30, 50, 70, 80 and 100%. Columns: sketch, SDXS, FLUX + ControlNet, StableFlow, ProgressNet and the reference photograph." target="_blank" rel="noopener">View all seven stages</a><a class="source-link" href="./paper.pdf#page=41" target="_blank" rel="noopener">Figure 29</a></p>
+    </figure>
+        </div>
+        <section class="gallery-section" id="comparisons" aria-labelledby="gallery-title">
+          <h3 id="gallery-title">All supplementary comparisons</h3>
+          <p class="section-intro gallery-intro">23 sequences from Figures 13–35. Each thumbnail shows the final sketch and ProgressNet output; open it to compare all methods at 10%, 20%, 30%, 50%, 70%, 80%, and 100% completion.</p>
+          <div class="gallery"><article class="gallery-card" id="gallery-cat">
+      <a href="./assets/comparisons/figure-13.jpg" target="_blank" rel="noopener" data-figure data-title="Cat — Figure 13" data-description="Prompt: “In this scene the cat sitting.” — Supplementary Figure 13, page 25. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Cat, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/cat.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Cat: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Cat</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=25" target="_blank" rel="noopener">Figure 13</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-farm">
+      <a href="./assets/comparisons/figure-14.jpg" target="_blank" rel="noopener" data-figure data-title="Farm and trees — Figure 14" data-description="Prompt: “farm with trees in surrounding.” — Supplementary Figure 14, page 26. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Farm and trees, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/farm.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Farm and trees: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Farm and trees</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=26" target="_blank" rel="noopener">Figure 14</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-forest-train">
+      <a href="./assets/comparisons/figure-15.jpg" target="_blank" rel="noopener" data-figure data-title="Train in woodland — Figure 15" data-description="Prompt: “a train moving through the woods.” — Supplementary Figure 15, page 27. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Train in woodland, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/forest-train.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Train in woodland: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Train in woodland</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=27" target="_blank" rel="noopener">Figure 15</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-giraffe">
+      <a href="./assets/comparisons/figure-16.jpg" target="_blank" rel="noopener" data-figure data-title="Giraffe and tree — Figure 16" data-description="Prompt: “a giraffe is standing near a tree.” — Supplementary Figure 16, page 28. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Giraffe and tree, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/giraffe.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Giraffe and tree: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Giraffe and tree</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=28" target="_blank" rel="noopener">Figure 16</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-electric-train">
+      <a href="./assets/comparisons/figure-17.jpg" target="_blank" rel="noopener" data-figure data-title="Train on a rail track — Figure 17" data-description="Prompt: “A train on a rail track.” — Supplementary Figure 17, page 29. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Train on a rail track, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/electric-train.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Train on a rail track: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Train on a rail track</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=29" target="_blank" rel="noopener">Figure 17</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-bird">
+      <a href="./assets/comparisons/figure-18.jpg" target="_blank" rel="noopener" data-figure data-title="Bird and fruit — Figure 18" data-description="Prompt: “A bird is sitting on the branch of a tree eating a fruit.” — Supplementary Figure 18, page 30. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Bird and fruit, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/bird.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Bird and fruit: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Bird and fruit</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=30" target="_blank" rel="noopener">Figure 18</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-overhead-train">
+      <a href="./assets/comparisons/figure-19.jpg" target="_blank" rel="noopener" data-figure data-title="Train from above — Figure 19" data-description="Prompt: “a train on the tracks.” — Supplementary Figure 19, page 31. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Train from above, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/overhead-train.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Train from above: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Train from above</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=31" target="_blank" rel="noopener">Figure 19</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-dog">
+      <a href="./assets/comparisons/figure-20.jpg" target="_blank" rel="noopener" data-figure data-title="Dog and frisbee — Figure 20" data-description="Prompt: “A dog sitting and eagerly waiting to catch the frisbee.” — Supplementary Figure 20, page 32. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Dog and frisbee, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/dog.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Dog and frisbee: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Dog and frisbee</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=32" target="_blank" rel="noopener">Figure 20</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-jets">
+      <a href="./assets/comparisons/figure-21.jpg" target="_blank" rel="noopener" data-figure data-title="Jets and contrails — Figure 21" data-description="Prompt: “Jetplanes flying in the sky.” — Supplementary Figure 21, page 33. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Jets and contrails, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/jets.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Jets and contrails: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Jets and contrails</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=33" target="_blank" rel="noopener">Figure 21</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-sheep">
+      <a href="./assets/comparisons/figure-22.jpg" target="_blank" rel="noopener" data-figure data-title="Sheep in a field — Figure 22" data-description="Prompt: “sheep standing in a field.” — Supplementary Figure 22, page 34. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Sheep in a field, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/sheep.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Sheep in a field: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Sheep in a field</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=34" target="_blank" rel="noopener">Figure 22</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-tennis">
+      <a href="./assets/comparisons/figure-23.jpg" target="_blank" rel="noopener" data-figure data-title="Tennis player — Figure 23" data-description="Prompt: “player playing a tennis game.” — Supplementary Figure 23, page 35. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Tennis player, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/tennis.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Tennis player: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Tennis player</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=35" target="_blank" rel="noopener">Figure 23</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-mountain-birds">
+      <a href="./assets/comparisons/figure-24.jpg" target="_blank" rel="noopener" data-figure data-title="Birds over mountains — Figure 24" data-description="Prompt: “Few birds are flying over the mountains.” — Supplementary Figure 24, page 36. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Birds over mountains, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/mountain-birds.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Birds over mountains: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Birds over mountains</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=36" target="_blank" rel="noopener">Figure 24</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-industry">
+      <a href="./assets/comparisons/figure-25.jpg" target="_blank" rel="noopener" data-figure data-title="Industrial scene — Figure 25" data-description="Prompt: “Industrial belt in the city.” — Supplementary Figure 25, page 37. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Industrial scene, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/industry.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Industrial scene: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Industrial scene</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=37" target="_blank" rel="noopener">Figure 25</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-planes">
+      <a href="./assets/comparisons/figure-26.jpg" target="_blank" rel="noopener" data-figure data-title="Aeroplanes — Figure 26" data-description="Prompt: “aeroplanes are flying in the sky.” — Supplementary Figure 26, page 38. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Aeroplanes, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/planes.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Aeroplanes: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Aeroplanes</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=38" target="_blank" rel="noopener">Figure 26</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-modern-train">
+      <a href="./assets/comparisons/figure-27.jpg" target="_blank" rel="noopener" data-figure data-title="Train in perspective — Figure 27" data-description="Prompt: “a train moving on tracks.” — Supplementary Figure 27, page 39. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Train in perspective, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/modern-train.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Train in perspective: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Train in perspective</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=39" target="_blank" rel="noopener">Figure 27</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-signal">
+      <a href="./assets/comparisons/figure-28.jpg" target="_blank" rel="noopener" data-figure data-title="Road signals — Figure 28" data-description="Prompt: “signal and direction pole on road.” — Supplementary Figure 28, page 40. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Road signals, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/signal.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Road signals: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Road signals</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=40" target="_blank" rel="noopener">Figure 28</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-crosswalk">
+      <a href="./assets/comparisons/figure-29.jpg" target="_blank" rel="noopener" data-figure data-title="Street crossing — Figure 29" data-description="Prompt: “People are crossing the busy streets.” — Supplementary Figure 29, page 41. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Street crossing, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/crosswalk.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Street crossing: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Street crossing</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=41" target="_blank" rel="noopener">Figure 29</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-palm">
+      <a href="./assets/comparisons/figure-30.jpg" target="_blank" rel="noopener" data-figure data-title="Planes and palm tree — Figure 30" data-description="Prompt: “Two planes flying in sky where a coconut tree is also in the frame.” — Supplementary Figure 30, page 42. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Planes and palm tree, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/palm.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Planes and palm tree: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Planes and palm tree</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=42" target="_blank" rel="noopener">Figure 30</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-clock">
+      <a href="./assets/comparisons/figure-31.jpg" target="_blank" rel="noopener" data-figure data-title="Park and clock tower — Figure 31" data-description="Prompt: “a park with clock tower and a streetlamp nearby” — Supplementary Figure 31, page 43. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Park and clock tower, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/clock.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Park and clock tower: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Park and clock tower</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=43" target="_blank" rel="noopener">Figure 31</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-truck">
+      <a href="./assets/comparisons/figure-32.jpg" target="_blank" rel="noopener" data-figure data-title="Mini truck — Figure 32" data-description="Prompt: “A mini truck on road.” — Supplementary Figure 32, page 44. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Mini truck, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/truck.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Mini truck: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Mini truck</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=44" target="_blank" rel="noopener">Figure 32</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-locomotive">
+      <a href="./assets/comparisons/figure-33.jpg" target="_blank" rel="noopener" data-figure data-title="Train and clouds — Figure 33" data-description="Prompt: “a train on a track.” — Supplementary Figure 33, page 45. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Train and clouds, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/locomotive.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Train and clouds: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Train and clouds</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=45" target="_blank" rel="noopener">Figure 33</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-kite">
+      <a href="./assets/comparisons/figure-34.jpg" target="_blank" rel="noopener" data-figure data-title="Flying a kite — Figure 34" data-description="Prompt: “A boy and a girl flying a kite.” — Supplementary Figure 34, page 46. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Flying a kite, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/kite.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Flying a kite: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Flying a kite</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=46" target="_blank" rel="noopener">Figure 34</a> · Complete seven-stage comparison</p>
+    </article>
+<article class="gallery-card" id="gallery-railway">
+      <a href="./assets/comparisons/figure-35.jpg" target="_blank" rel="noopener" data-figure data-title="Railway details — Figure 35" data-description="Prompt: “A train moving on track.” — Supplementary Figure 35, page 47. All seven published completion stages and all six original columns are retained. ProgressNet is labeled Ours (Full), and GT is the reference photograph." aria-label="View Railway details, all seven stages and all compared methods">
+        <img class="figure-image" src="./assets/thumbnails/railway.jpg" width="528" height="294" loading="lazy" decoding="async" alt="Railway details: the complete final sketch beside the ProgressNet output at 100% completion.">
+        <h4>Railway details</h4>
+      </a>
+      <p><a class="source-link" href="./paper.pdf#page=47" target="_blank" rel="noopener">Figure 35</a> · Complete seven-stage comparison</p>
+    </article></div>
+          <p class="gallery-note">These are the original supplementary figure images, including all compared methods and the reference photograph. Pose accuracy and heavily overlapping strokes remain challenging; see <a class="source-link" href="./paper.pdf#page=35" target="_blank" rel="noopener">Figure 23</a> and <a class="source-link" href="./paper.pdf#page=46" target="_blank" rel="noopener">Figure 34</a>.</p>
+        </section>
+      </div>
+    </section>
+    <section class="pair-section" aria-labelledby="edits-title">
+      <div class="container">
+        <h2 id="edits-title">Drawing and Editing Comparisons</h2>
+        <p class="section-intro">Additional examples from the main paper. The original output panels, sketch annotations, and comparison labels are preserved.</p>
+        <figure class="qualitative-figure compact-figure">
+          <h3>Responding to erased strokes</h3>
+          <a class="figure-link" href="./assets/figures/erasure-comparison.jpg" target="_blank" rel="noopener" data-figure data-title="Sketching and erasing — Figure 7" data-description="Complete right-hand subfigure from Figure 7. The original outputs, sketch annotations and method labels are preserved." data-alt="Original Figure 7 comparison: three sketches, FLUX plus ControlNet, and ProgressNet outputs for the zebra erasure sequence." aria-label="Enlarge Sketching and erasing — Figure 7"><img class="figure-image" src="./assets/figures/erasure-comparison.jpg" width="1700" height="1963" loading="lazy" decoding="async" alt="Original Figure 7 comparison: three sketches, FLUX plus ControlNet, and ProgressNet outputs for the zebra erasure sequence."></a>
+          <figcaption class="figure-caption">Three successive zebra sketches with FLUX + ControlNet and ProgressNet. The example compares structural artifacts and changes in the established scene during drawing and erasure. <a class="source-link" href="./paper.pdf#page=8" target="_blank" rel="noopener">Figure 7</a>.</figcaption>
+        </figure>
+        <figure class="qualitative-figure reading-width">
+          <h3>Changing the sketch without restarting the scene</h3>
+          <a class="figure-link" href="./assets/figures/progressive-animal-comparison.jpg" target="_blank" rel="noopener" data-figure data-title="Progressive animal comparisons — Figure 8(a)" data-description="Figure 8(a). These are the original annotated source panels. Ours denotes ProgressNet." data-alt="Two-turn giraffe and zebra comparisons with SDXS, FLUX plus ControlNet, StableFlow and ProgressNet. Original red artifact annotations are preserved." aria-label="Enlarge Progressive animal comparisons — Figure 8(a)"><img class="figure-image" src="./assets/figures/progressive-animal-comparison.jpg" width="2100" height="1930" loading="lazy" decoding="async" alt="Two-turn giraffe and zebra comparisons with SDXS, FLUX plus ControlNet, StableFlow and ProgressNet. Original red artifact annotations are preserved."></a>
+          <figcaption class="figure-caption">Giraffe and zebra comparisons across successive edits. Red dashed circles are the paper’s original annotations of drift and artifacts. ProgressNet is labeled “Ours.” <a class="source-link" href="./paper.pdf#page=8" target="_blank" rel="noopener">Figure 8</a>(a).</figcaption>
+        </figure>
+        <figure class="qualitative-figure local-figure">
+          <h3>Fine-grained edits</h3>
+          <a class="figure-link" href="./assets/figures/fine-grained-comparison.jpg" target="_blank" rel="noopener" data-figure data-title="Fine-grained edits — Figure 8(c)" data-description="Figure 8(c). All original detail and full-scene panels are retained. Nano Banana Pro is a qualitative interface comparison, not a controlled benchmark ranking (Appendix F)." data-alt="Original fine-grained giraffe ear, mane, muzzle, neck and landscape edits, showing sketches, detail views, Nano Banana Pro and ProgressNet with full-scene thumbnails." aria-label="Enlarge Fine-grained edits — Figure 8(c)"><img class="figure-image" src="./assets/figures/fine-grained-comparison.jpg" width="2200" height="4295" loading="lazy" decoding="async" alt="Original fine-grained giraffe ear, mane, muzzle, neck and landscape edits, showing sketches, detail views, Nano Banana Pro and ProgressNet with full-scene thumbnails."></a>
+          <figcaption class="figure-caption">Local changes to the giraffe’s ear, mane, muzzle and neck, followed by landscape edits. Full-scene thumbnails accompany the detail crops. <a class="source-link" href="./paper.pdf#page=8" target="_blank" rel="noopener">Figure 8</a>(c).</figcaption>
+        </figure>
+        <figure class="qualitative-figure creative-figure">
+          <h3>Creative sketching</h3>
+          <a class="figure-link" href="./assets/figures/creative-comparison.jpg" target="_blank" rel="noopener" data-figure data-title="Creative sketching — Figure 8(b)" data-description="Figure 8(b). Source prompts, intermediate outputs and original comparison images are preserved. Qualitative interface comparison only; see Appendix F." data-alt="The original grassy hat with Saturn ring and magical animal-eye examples, with evolving sketches, intermediate ProgressNet outputs, the final outputs and Nano Banana Pro comparisons." aria-label="Enlarge Creative sketching — Figure 8(b)"><img class="figure-image" src="./assets/figures/creative-comparison.jpg" width="2400" height="1933" loading="lazy" decoding="async" alt="The original grassy hat with Saturn ring and magical animal-eye examples, with evolving sketches, intermediate ProgressNet outputs, the final outputs and Nano Banana Pro comparisons."></a>
+          <figcaption class="figure-caption">The complete three-turn creative examples, including the evolving sketches, intermediate outputs, original prompts, and final images. <a class="source-link" href="./paper.pdf#page=8" target="_blank" rel="noopener">Figure 8</a>(b).</figcaption>
+        </figure>
+        <p class="protocol-note">The Nano Banana Pro examples are qualitative comparisons through its public interface, not a controlled benchmark ranking. The paper describes the comparison protocol in <a href="./paper.pdf#page=24" target="_blank" rel="noopener">Appendix F</a>.</p>
+        <details class="examples-details">
+          <summary>Additional examples: rough sketches and adaptive control</summary>
+          <div class="details-content">
+            <figure><a class="figure-link" href="./assets/figures/rough-sketch-comparison.jpg" target="_blank" rel="noopener" data-figure data-title="Rough sketches and adaptive memory control — Figure 9" data-description="Complete figure from the supplied fig9_song_cropped.pdf. These are the actual paper images, not recreated examples." data-alt="The exact Figure 9 birthday cake, seagull, sunset and giraffe sketches, their prompts and the original without-BAC and with-BAC outputs." aria-label="Enlarge Rough sketches and adaptive memory control — Figure 9"><img class="figure-image" src="./assets/figures/rough-sketch-comparison.jpg" width="2200" height="1667" loading="lazy" decoding="async" alt="The exact Figure 9 birthday cake, seagull, sunset and giraffe sketches, their prompts and the original without-BAC and with-BAC outputs."></a><figcaption class="figure-caption">The exact birthday-cake, seagull, sunset and giraffe examples from <a class="source-link" href="./paper.pdf#page=9" target="_blank" rel="noopener">Figure 9</a>, comparing the same method without and with BAC. All original sketches, prompt boxes and output panels are included.</figcaption></figure>
+          </div>
+        </details>
+      </div>
+    </section>
+    <section class="bibtex-section" id="bibtex" aria-labelledby="bibtex-title">
+      <div class="container">
+        <div class="bibtex-head"><h2 id="bibtex-title">BibTeX</h2><button id="copy-citation" class="copy-button" type="button" hidden>Copy BibTeX</button></div>
+        <pre><code id="citation">@misc{basu2026progressnet,
+  title={ProgressNet: Sketching and Prompting with a Frozen Text-to-Image Model},
+  author={Arkaprabha Basu and Chaitat Utintu and Yi-Zhe Song},
+  year={2026},
+  eprint={2610.03512},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.03512}
+}</code></pre>
+        <p class="sr-only" id="copy-status" role="status" aria-live="polite"></p>
+        <p class="acknowledgements">This work was supported by the Arts and Humanities Research Council through the CoSTAR National Lab (Grant Ref. AH/Y001060/1).</p>
+      </div>
+    </section>
+  </main>
+  <footer><p><a href="https://thecoder1012.github.io/">Arkaprabha Basu</a> · <a href="./paper.pdf">Paper</a> · <a href="#demo">Back to demo</a></p><p>Page layout follows <a href="https://hmrishavbandy.github.io/flipsketch-web/">FlipSketch</a> and <a href="https://nerfies.github.io/">Nerfies</a>.</p></footer>
+  <dialog class="view-dialog" id="figure-viewer" aria-labelledby="viewer-title" aria-describedby="viewer-description">
+    <div class="viewer-bar"><p class="viewer-title" id="viewer-title">ProgressNet result</p><div class="viewer-links"><a id="viewer-original" href="./assets/figures/interaction-source.jpg" target="_blank" rel="noopener">Open full-size image</a><button id="viewer-close" type="button" class="viewer-button">Close</button></div></div>
+    <p class="viewer-description" id="viewer-description"></p>
+    <img class="viewer-image" id="viewer-image" alt="" decoding="async">
+  </dialog>
+</body>
+</html>
